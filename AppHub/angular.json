@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "AppHub"
+  "defaultProject": "AppHub",
+  "cli": {
+    "analytics": "e450ad61-0dde-4380-a1c6-a51671b0ffc9"
+  }
 }
