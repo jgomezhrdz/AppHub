@@ -9,7 +9,7 @@ export class YoutubeService {
   }
 
   getVideos(_keyWord: string): Observable<any>{
-    const url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=+"+_keyWord+"&type=video&videoCaption=closedCaption&key="+this.API_KEY+""
+    const url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=+"+_keyWord+"&type=video&videoCaption=closedCaption&key="+this.API_KEY+""
     return this.http.get<any>(url)
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Video } from '../video';
 
 @Component({
   selector: 'app-youtube-player',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YoutubePlayerComponent implements OnInit {
 
+  videoId !: string
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.videoId = sessionStorage.getItem('VideoId') as string;
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.body.appendChild(tag);
   }
 
 }

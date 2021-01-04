@@ -1,9 +1,45 @@
+<div>
 <form>
     <div class="form-group">
       <label for="exampleInput">Search Video</label>
-      <input type="text" ([ngModel])="keyword" class="form-control" id="exampleInput" placeholder="Keywords...">
+      <input [(ngModel)]="keyword" name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
       <small id="emailHelp" class="form-text text-muted">Enter the keyword you want to search for.</small>
     </div>
     <button type="button" class="btn btn-primary" (click)="getVideosList()">Search</button>
-  </form>
-  
+</form>
+<a><button ng-click="enabled=true">search</button></a>
+
+<select ng-model="test" ng-disabled="!enabled">
+<option value="">A</option>
+<option value="">B</option>
+<option value="">C</option>
+<option value="">D</option>
+</select>
+<select ng-model="test1" ng-disabled="!enabled">
+<option value="">1</option>
+<option value="">2</option>
+<option value="">3</option>
+<option value="">4</option>
+<option value="">5</option>
+</select>
+</div>
+
+<div class="ui four column grid">
+  <div class="column" *ngFor="let video of videos">
+    <div class="ui card">
+      <div class="content">
+        <a class="header" style="margin: 1em 0 1em 0;">{{ video.title }}</a>
+        <div class="meta">
+          <span class="ui right floated date" style="font-weight: bolder;">{{ video.publishedAt | date:'mediumDate' }}</span>
+        </div>
+        <div class="description">
+          {{ video.description?.slice(0,100) }}...
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline-dark" (click)="watchVideo(video)">
+      <i class="external alternate icon"></i>
+      Watch
+    </button>
+  </div>
+</div>
