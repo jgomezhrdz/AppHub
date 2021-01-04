@@ -1,0 +1,9 @@
+<form>
+    <div class="form-group">
+      <label for="exampleInput">Search Video</label>
+      <input type="text" ([ngModel])="keyword" class="form-control" id="exampleInput" placeholder="Keywords...">
+      <small id="emailHelp" class="form-text text-muted">Enter the keyword you want to search for.</small>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="getVideosList()">Search</button>
+  </form>
+  
