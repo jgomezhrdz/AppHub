@@ -11,7 +11,7 @@ class IndexRoutes {
 
     config(): void {
     }
-
+    
 }
 
 const indexRoutes = new IndexRoutes();

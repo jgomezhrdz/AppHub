@@ -7,7 +7,7 @@ import userRoutes from './routes/userRoutes';
 class Server{
 
     app: express.Application;
-
+//---
     constructor(){
         this.app = express();
         this.config();
