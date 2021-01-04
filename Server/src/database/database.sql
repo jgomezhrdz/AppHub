@@ -1,0 +1,21 @@
+CREATE DATABASE App_Hubb;
+
+USE App_Hubb;
+
+CREATE TABLE user (
+    email VARCHAR(11) NOT NULL PRIMARY KEY,
+    title VARCHAR(180),
+    description VARCHAR(255),
+    image VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE guest (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(180),
+    description VARCHAR(255),
+    image VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DESCRIBE game;
