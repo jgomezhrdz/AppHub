@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { YoutubeModule } from './youtube/youtube.module';
 import { YoutubeSearcherComponent } from './youtube/youtube-searcher/youtube-searcher.component';
 import { FormsModule } from '@angular/forms';
+import { VideosOfflineModule } from './videos-offline/videos-offline.module';
+import { MusicaOfflineModule } from './musica-offline/musica-offline.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     YoutubeModule,
+    VideosOfflineModule,
+    MusicaOfflineModule,
     FormsModule,
     CommonModule,
     AppRoutingModule,

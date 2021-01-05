@@ -16,14 +16,14 @@ const dbConnection_1 = __importDefault(require("../dbConnection/dbConnection"));
 class UserController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const users = yield dbConnection_1.default.query('SELECT * FROM user');
+            const users = yield dbConnection_1.default.query('SELECT * FROM guest');
             res.json(users);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ?', [id]);
+            const { email, id } = req.params;
+            const user = yield dbConnection_1.default.query('SELECT * FROM guest WHERE email = ? AND id = ?', [email, id]);
             console.log(user.length);
             if (user.length > 0) {
                 return res.json(user[0]);
@@ -33,22 +33,22 @@ class UserController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield dbConnection_1.default.query('INSERT INTO user set ?', [req.body]);
+            const result = yield dbConnection_1.default.query('INSERT INTO guest set ?', [req.body]);
             res.json({ message: 'user Saved' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { email, id } = req.params;
             const oldGame = req.body;
-            yield dbConnection_1.default.query('UPDATE user set ? WHERE email = ?', [req.body, id]);
+            yield dbConnection_1.default.query('UPDATE guest set ? WHERE id = ? and email =  ?', [req.body, id, email]);
             res.json({ message: "The user was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield dbConnection_1.default.query('DELETE FROM user WHERE email = ?', [id]);
+            const { email, id } = req.params;
+            yield dbConnection_1.default.query('DELETE FROM user WHERE id = ? and email = ?', [id, email]);
             res.json({ message: "The game was deleted" });
         });
     }
