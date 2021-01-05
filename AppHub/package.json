@@ -27,6 +27,7 @@
     "mysql": "^2.18.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "videogular2": "^7.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

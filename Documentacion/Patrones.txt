@@ -3,7 +3,9 @@ Patrones que se pueden o van a aplicar (Tienen que ser mínimo 9 -- Actualmente 
 Patrones de Creación (Mínimo 2 - Actualmente 3)
     - Builder: Para la creación de usuarios, tipo admin o guest 
     - Prototype: Para la creacion de videos y musica descargada
-    - Singleton: Para la conexion a la base de datos (el pool de conexiones)
+    - Singleton: Para la conexion a la base de datos (el pool de conexiones) y para los videos y 
+    canciones presentes (se tiene un hashmap en cada objeto y uera)
+        - Los servicios que se crean son de tiplo singleton. SIUUU.
 
 Patrones Estructurales (Mínimo 2 - Actualmente 2)
     - Decorator o Proxy: Para el reproductor de youtube. Comprobar si es o no un usuario administrador

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';@Injectable({
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
   providedIn: 'root'
 })
+
 export class YoutubeService {
   private API_KEY = "AIzaSyB5is2OQmXbsuej06V3Uawi9NDzxTgZrLw"
   constructor(private http:HttpClient) { 
