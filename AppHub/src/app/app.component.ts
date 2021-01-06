@@ -7,9 +7,9 @@ import {YoutubeService} from '../app/youtube/youtube.service'
 })
 export class AppComponent {
   title = 'AppHub';
-  constructor(){}
+  constructor(private yt : YoutubeService){}
 
   ngOnInit(){
-
+    this.yt.downloadMusic("ojala que si")
   }
 }

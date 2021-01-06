@@ -2,21 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 const youtubedl = require('youtube-dl')
+const ytdl = require('ytdl-core');
 const fs = require('fs')
 
-var title = ""
-var output = '../AppHub/src/assets/'+title;
-
-var yd = new YoutubeMp3Downloader({
-    "ffmpegPath": "/path/to/ffmpeg",        // FFmpeg binary location
-    "outputPath": "/path/to/mp3/folder",    // Output file location (default: the home directory)
-    "youtubeVideoQuality": "highestaudio",  // Desired video quality (default: highestaudio)
-    "queueParallelism": 2,                  // Download parallelism (default: 1)
-    "progressTimeout": 2000,                // Interval in ms for the progress reports (default: 1000)
-    "allowWebm": false                      // Enable download from WebM sources (default: false)
-});
  
 app.use(cors());
 app.listen(4000, () => {
@@ -25,11 +14,11 @@ app.listen(4000, () => {
 
 
 app.get('/download/video', (req,res) => {
-    var URL = req.query.URL;
-    this.title = req.query.title;
+    var URL = req.query.url;
+    var title = req.query.title;
     let downloaded = 0
-    if (fs.existsSync(output)) {
-      downloaded = fs.statSync(output).size
+    if (fs.existsSync(videooutput)) {
+      downloaded = fs.statSync(videooutput).size
     }
     const video = youtubedl(URL, ['--format=18'], { start: downloaded, cwd: __dirname })
     video.on('info', function(info) {
@@ -42,16 +31,17 @@ app.get('/download/video', (req,res) => {
         console.log('remaining bytes: ' + info.size)
       }
     })
-    video.pipe(fs.createWriteStream(output, { flags: 'a' }))
+    var videooutput = '../AppHub/src/assets/videos/'+title+".mp4";
+    video.pipe(fs.createWriteStream(videooutput, { flags: 'a' }))
     res.json("res: Video descargado");
 })
 
 app.get('/download/music', (req,res) => {
-    var URL = req.query.URL;
-    this.title = req.query.title;
+    var URL = req.query.url;
+    var title = req.query.title;
     let downloaded = 0
-    if (fs.existsSync(output)) {
-      downloaded = fs.statSync(output).size
+    if (fs.existsSync(videooutput)) {
+      downloaded = fs.statSync(videooutput).size
     }
     const video = youtubedl(URL, ['--format=18'], { start: downloaded, cwd: __dirname })
     video.on('info', function(info) {
@@ -64,7 +54,8 @@ app.get('/download/music', (req,res) => {
         console.log('remaining bytes: ' + info.size)
       }
     })
-    video.pipe(fs.createWriteStream(output, { flags: 'a' }))
+    var videooutput = '../AppHub/src/assets/musica/'+title+".mp3";
+    video.pipe(fs.createWriteStream(videooutput, { flags: 'a' }))
     res.json("res: Video descargado");
 })
 

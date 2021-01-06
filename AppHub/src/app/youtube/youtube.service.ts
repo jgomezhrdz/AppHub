@@ -19,16 +19,17 @@ export class YoutubeService {
   }
   downloadVideo(video: VideoYoutube, title:string){
     const url: string = video.videoUrl
-    this.http.get("http://localhost:4000/download/video?URL="+url+"?name="+title)
+    this.http.get("http://localhost:4000/download/video?url="+url+"&title="+title)
     .subscribe(data => {console.log(data)})
     var videoOff = new Video(video.videoId, video.title)
     this.listaVideos.añadirVideo(videoOff)
   }
-  downloadMusic(video: VideoYoutube, title:string){
-    const id: string = video.videoId
-    this.http.get("http://localhost:4000/download/video?id="+id+"?title="+title)
+
+  downloadMusic(title:string){
+    const url: string = "https://www.youtube.com/watch?v=HXyL1sOsFtA&t=21s"
+    this.http.get("http://localhost:4000/download/music?url="+url+"&title="+title)
     .subscribe(data => {console.log(data)})
-    var videoOff = new Video(video.videoId, video.title)
-    this.listaVideos.añadirVideo(videoOff)
+    //var videoOff = new Video(video.videoId, video.title)
+    //this.listaVideos.añadirVideo(videoOff)
   }
 }

@@ -22,8 +22,8 @@ export class ListaVideosService {
     }
   }
   añadirVideo(video: Video): void{
-    if(this.listaVideos.has(video.getId)){
-      this.listaVideos.get("")?.push(video);
+    if(this.listaVideos.has(video.getId())){
+      this.listaVideos.get(video.getId())?.push(video);
     }
     else{
       this.listaVideos.set("", new Array())
