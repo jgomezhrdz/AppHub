@@ -15,6 +15,7 @@ export class YoutubeService {
     const url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=+"+_keyWord+"&type=video&videoCaption=closedCaption&key="+this.API_KEY+""
     return this.http.get<any>(url)
   }
+<<<<<<< HEAD
 
   downloadVideo(){
     const fs = require('fs')
@@ -22,4 +23,6 @@ export class YoutubeService {
     const video = youtubedl('http://www.youtube.com/watch?v=90AiXO1pAiA')
     video.pipe(fs.createWriteStream('myvideo.mp4'))
   }
+=======
+>>>>>>> parent of 1d3fddf... añadir implementaciones de busqueda
 }
