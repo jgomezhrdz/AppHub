@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../video';
+import { VideoYoutube } from '../video';
 import { YoutubeService } from '../youtube.service';
 
 @Component({
@@ -9,18 +9,17 @@ import { YoutubeService } from '../youtube.service';
 })
 export class YoutubePlayerComponent implements OnInit {
 
-  videoId !: string
+  video !: VideoYoutube
   constructor(private yt: YoutubeService) { }
 
   ngOnInit() {
-    this.videoId = sessionStorage.getItem('VideoId') as string;
+    this.video = JSON.parse(sessionStorage.getItem('Video') as string) as VideoYoutube
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
   }
 
   downloadVideo(){
-    this.videoId = sessionStorage.getItem('VideoUrl') as string;
-    this.yt.downloadVideo(this.videoId);
+    this.yt.downloadVideo(this.video, this.video.title);
   }
 }

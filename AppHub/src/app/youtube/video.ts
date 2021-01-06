@@ -1,4 +1,4 @@
-export class Video {
+export class VideoYoutube {
     videoId: string;
     videoUrl: string;
     channelId: string;

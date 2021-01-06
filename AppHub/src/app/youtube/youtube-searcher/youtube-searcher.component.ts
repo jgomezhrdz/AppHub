@@ -1,6 +1,6 @@
 import { KeyedWrite } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../video';
+import { VideoYoutube } from '../video';
 import { YoutubeService } from '../youtube.service';
 import {Router} from '@angular/router';
 
@@ -11,14 +11,13 @@ import {Router} from '@angular/router';
 })
 export class YoutubeSearcherComponent {
   keyword !: string;
-  videos : Video[] = [];
+  videos : VideoYoutube[] = [];
 
   constructor(private youtube: YoutubeService, private router: Router) {
   }
 
-  watchVideo(video: Video){
-    sessionStorage.setItem("VideoId", video.videoId)
-    sessionStorage.setItem("VideoUrl", video.videoUrl)
+  watchVideo(video: VideoYoutube){
+    sessionStorage.setItem("Video", JSON.stringify(video))
     this.router.navigateByUrl('/YoutubePlayer');
   }
   getVideosList(): void {
@@ -26,11 +25,11 @@ export class YoutubeSearcherComponent {
       (data) => {
         console.log(data.items)
         this.videos = data.items.map((item: any) => {
-          let video = new Video(
+          let video = new VideoYoutube(
             item.id.videoId,
-            'https://www.youtube.com/watch?v=${'+item.id.videoId+'}',
+            'https://www.youtube.com/watch?v='+item.id.videoId,
             item.snippet.channelId,
-            'https://www.youtube.com/channel/${'+item.snippet.channelId+'}',
+            'https://www.youtube.com/channel/'+item.snippet.channelId,
             item.snippet.channelTitle,
             item.snippet.title,
             new Date(item.snippet.publishedAt),

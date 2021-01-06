@@ -1,7 +1,7 @@
-import { Video } from './video';
+import { VideoYoutube } from './video';
 
 describe('Video', () => {
   it('should create an instance', () => {
-    expect(new Video()).toBeTruthy();
+    expect(new VideoYoutube()).toBeTruthy();
   });
 });

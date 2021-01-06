@@ -4,7 +4,9 @@ const app = express();
 
 const youtubedl = require('youtube-dl')
 const fs = require('fs')
-const output = '../AppHub/src/assets/myvideo.mp4'
+
+var title = ""
+var output = '../AppHub/src/assets/'+title;
  
 app.use(cors());
 app.listen(4000, () => {
@@ -14,6 +16,7 @@ app.listen(4000, () => {
 
 app.get('/download', (req,res) => {
     var URL = req.query.URL;
+    this.title = req.query.title;
     let downloaded = 0
     if (fs.existsSync(output)) {
       downloaded = fs.statSync(output).size
