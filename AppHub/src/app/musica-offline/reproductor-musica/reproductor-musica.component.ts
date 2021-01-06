@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArchivoMusica } from '../archivo-musica';
 import { ListaCancionesService } from '../lista-canciones.service';
 
 @Component({
@@ -8,9 +9,14 @@ import { ListaCancionesService } from '../lista-canciones.service';
 })
 export class ReproductorMusicaComponent implements OnInit {
 
+  cancionActual !: ArchivoMusica
   constructor(private canciones: ListaCancionesService) { }
 
   ngOnInit(): void {
+    this.cancionActual = JSON.parse(sessionStorage.getItem("CancionOff") as string) as ArchivoMusica
   }
 
+  pasarCancion(){
+    
+  }
 }

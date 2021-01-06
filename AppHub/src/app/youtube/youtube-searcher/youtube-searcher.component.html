@@ -1,19 +1,19 @@
-<form>
+<div class = "panel">
     <div class="form-group">
-      <label for="exampleInput">Search Video</label>
+      <label for="exampleInput">Search Video
+        <select class = "btn btn-secondary btn-sm dropdown-toggle" ng-model="test" ng-disabled="!enabled">
+          <option value="">A</option>
+          <option value="">B</option>
+          <option value="">C</option>
+          <option value="">D</option>
+          </select>
+      </label>
       <input [(ngModel)]="keyword" name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
       <small id="emailHelp" class="form-text text-muted">Enter the keyword you want to search for.</small>
     </div>
     <button type="button" class="btn btn-primary" (click)="getVideosList()">Search</button>
-</form>
-<a><button ng-click="enabled=true">search</button></a>
+  </div>
 
-<select ng-model="test" ng-disabled="!enabled">
-<option value="">A</option>
-<option value="">B</option>
-<option value="">C</option>
-<option value="">D</option>
-</select>
 
 <div class="ui four column grid">
   <div class="column" *ngFor="let video of videos">
@@ -34,3 +34,4 @@
     </button>
   </div>
 </div>
+

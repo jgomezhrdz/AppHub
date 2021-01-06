@@ -10,6 +10,7 @@ import { YoutubeSearcherComponent } from './youtube/youtube-searcher/youtube-sea
 import { FormsModule } from '@angular/forms';
 import { VideosOfflineModule } from './videos-offline/videos-offline.module';
 import { MusicaOfflineModule } from './musica-offline/musica-offline.module';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MusicaOfflineModule } from './musica-offline/musica-offline.module';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     YoutubeModule,
     VideosOfflineModule,
     MusicaOfflineModule,
