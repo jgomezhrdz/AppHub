@@ -9,4 +9,5 @@ npm i nodemon -D
 npm i @types/express -D 
 npm i promise-mysql@3.3.1 
 npm install youtube-dl
+npm i @types/node
  
