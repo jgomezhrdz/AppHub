@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoYoutube } from '../video';
-import { YoutubeService } from '../youtube.service';
+import { YoutubeService } from '../servicios/youtube.service';
+import { VideoDownloaderService } from '../servicios/video-downloader.service';
+import { MusicDownloaderService } from '../servicios/music-downloader.service';
 
 @Component({
   selector: 'app-youtube-player',
@@ -10,7 +12,8 @@ import { YoutubeService } from '../youtube.service';
 export class YoutubePlayerComponent implements OnInit {
 
   video !: VideoYoutube
-  constructor(private yt: YoutubeService) { }
+  constructor(private videoDownloader: VideoDownloaderService, 
+              private musicDownloader: MusicDownloaderService ) { }
 
   ngOnInit() {
     this.video = JSON.parse(sessionStorage.getItem('Video') as string) as VideoYoutube
@@ -20,6 +23,10 @@ export class YoutubePlayerComponent implements OnInit {
   }
 
   downloadVideo(){
-    this.yt.downloadVideo(this.video, this.video.title);
+    this.videoDownloader.downloadVideo(this.video);
+  }
+
+  downloadMusic(){
+    this.musicDownloader.downloadMusic(this.video);
   }
 }

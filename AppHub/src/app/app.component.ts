@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {YoutubeService} from '../app/youtube/youtube.service'
+import {YoutubeService} from './youtube/servicios/youtube.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,9 +7,8 @@ import {YoutubeService} from '../app/youtube/youtube.service'
 })
 export class AppComponent {
   title = 'AppHub';
-  constructor(private yt : YoutubeService){}
+  constructor(){}
 
   ngOnInit(){
-    this.yt.downloadMusic("ojala que si")
   }
 }
