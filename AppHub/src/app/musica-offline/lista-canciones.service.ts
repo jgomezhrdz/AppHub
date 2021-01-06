@@ -12,7 +12,7 @@ export class ListaCancionesService {
   iterador = this.listaCanciones[Symbol.iterator];
   
   
-  borrarVideo(musica: ArchivoMusica): void{
+  borrarCancion(musica: ArchivoMusica): void{
     if(this.listaCanciones.has(musica.getId())){
        this.listaCanciones.delete(musica.getId())
     }
@@ -20,7 +20,7 @@ export class ListaCancionesService {
       console.log("no hay ningun video con estas caracteristicas")
     }
   }
-  añadirVideo(musica: ArchivoMusica): void{
+  añadirCancion(musica: ArchivoMusica): void{
       this.listaCanciones.set(musica.getId(), musica)
   }
 }

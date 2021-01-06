@@ -9,12 +9,12 @@ import { VideoYoutube } from '../video';
 })
 export class MusicDownloaderService {
 
-  constructor(private http:HttpClient, private listaVideos: ListaCancionesService) { }
+  constructor(private http:HttpClient, private listaCanciones: ListaCancionesService) { }
 
   downloadMusic(video: VideoYoutube){
     this.http.get("http://localhost:4000/download/music?url="+video.videoUrl+"&title="+video.title)
     .subscribe(data => {console.log(data)})
-    var videoOff = new ArchivoMusica(video.videoId, video.title)
-    this.listaVideos.añadirVideo(videoOff)
+    var musica = new ArchivoMusica(video.videoId, video.title)
+    this.listaCanciones.añadirCancion(musica)
   }
 }
