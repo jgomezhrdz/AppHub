@@ -18,7 +18,7 @@ export class YoutubeService {
   downloadVideo(){
     const fs = require('fs')
     const youtubedl = require('youtube-dl')
-    const video = youtubedl('http://www.youtube.com/watch?v=90AiXO1pAiA')
+    const video = youtubedl('http://www.youtube.com/watch?v=90AiXO1pAiA',
     video.pipe(fs.createWriteStream('myvideo.mp4'))
   }
 }
