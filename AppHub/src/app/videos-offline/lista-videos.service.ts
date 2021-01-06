@@ -9,7 +9,7 @@ export class ListaVideosService {
 
   constructor() { }
 
-  listaVideos = new Map<String, Array<Video>>();
+  listaVideos = new Map<string, Array<Video>>();
   iterador = this.listaVideos[Symbol.iterator];
   
   borrarVideo(video: Video): void{
@@ -22,7 +22,7 @@ export class ListaVideosService {
     }
   }
   añadirVideo(video: Video): void{
-    if(this.listaVideos.has("")){
+    if(this.listaVideos.has(video.getId)){
       this.listaVideos.get("")?.push(video);
     }
     else{

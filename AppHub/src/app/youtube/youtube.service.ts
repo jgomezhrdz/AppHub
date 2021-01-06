@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { VideoYoutube } from './video';
+import { Video } from '../videos-offline/video';
 import { ListaVideosService } from '../videos-offline/lista-videos.service'
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class YoutubeService {
     const url: string = video.videoUrl
     this.http.get("http://localhost:4000/download?URL="+url+"?name="+name)
     .subscribe(data => {console.log(data)})
-    this.listaVideos.añadirVideo(video)
+    var videoOff = new Video(video.videoId, video.title)
+    this.listaVideos.añadirVideo(videoOff)
   }
 }
