@@ -19,7 +19,14 @@ export class YoutubeService {
   }
   downloadVideo(video: VideoYoutube, title:string){
     const url: string = video.videoUrl
-    this.http.get("http://localhost:4000/download?URL="+url+"?name="+name)
+    this.http.get("http://localhost:4000/download/video?URL="+url+"?name="+title)
+    .subscribe(data => {console.log(data)})
+    var videoOff = new Video(video.videoId, video.title)
+    this.listaVideos.añadirVideo(videoOff)
+  }
+  downloadMusic(video: VideoYoutube, title:string){
+    const id: string = video.videoId
+    this.http.get("http://localhost:4000/download/video?id="+id+"?title="+title)
     .subscribe(data => {console.log(data)})
     var videoOff = new Video(video.videoId, video.title)
     this.listaVideos.añadirVideo(videoOff)

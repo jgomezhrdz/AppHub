@@ -12,7 +12,6 @@ Patrones Estructurales (Mínimo 2 - Actualmente 2)
     para mostrar o no los botones de descarga
     - Builder: para el buscador local de videos y música.
         - Un buscador con varias formas de buscar.
-    - Adapter: para transformar los videos a midi (solo se requiere x información)
 
 Patrones de Comportamiento (Mínimo 2 - Actualmente 3)
     - Strategy: para las estrategias del buscador de youtube
