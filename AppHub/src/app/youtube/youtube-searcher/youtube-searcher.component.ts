@@ -1,7 +1,7 @@
 import { KeyedWrite } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { VideoYoutube } from '../video';
-import { YoutubeService } from '../youtube.service';
+import { YoutubeService } from '../servicios/youtube.service';
 import {Router} from '@angular/router';
 
 @Component({

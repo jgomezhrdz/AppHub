@@ -8,19 +8,20 @@ export class ListaCancionesService {
 
   constructor() { }
 
-  listaCanciones = new Map<String, ArchivoMusica>();
+  listaCanciones = new Array();
   iterador = this.listaCanciones[Symbol.iterator];
   
   
   borrarCancion(musica: ArchivoMusica): void{
-    if(this.listaCanciones.has(musica.getId())){
-       this.listaCanciones.delete(musica.getId())
+    if(this.listaCanciones.includes(musica.getId())){
+       this.listaCanciones.splice(this.listaCanciones.indexOf(musica), 1)
     }
     else{
       console.log("no hay ningun video con estas caracteristicas")
     }
   }
+  
   añadirCancion(musica: ArchivoMusica): void{
-      this.listaCanciones.set(musica.getId(), musica)
+      this.listaCanciones.push(musica)
   }
 }

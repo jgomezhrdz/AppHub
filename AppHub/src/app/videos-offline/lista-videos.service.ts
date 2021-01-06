@@ -9,18 +9,18 @@ export class ListaVideosService {
 
   constructor() { }
 
-  listaVideos = new Map<string, Video>();
+  listaVideos = new Array();
   iterador = this.listaVideos[Symbol.iterator];
   
   borrarVideo(video: Video): void{
-    if(this.listaVideos.has(video.getId())){
-       this.listaVideos.delete(video.getId())
-    }
-    else{
-      console.log("no hay ningun video con estas caracteristicas")
-    }
+    if(this.listaVideos.includes(video.getId())){
+      this.listaVideos.splice(this.listaVideos.indexOf(video), 1)
+   }
+   else{
+     console.log("no hay ningun video con estas caracteristicas")
+   }
   }
   añadirVideo(video: Video): void{
-      this.listaVideos.set(video.getId(), video)
+      this.listaVideos.push(video)
   }
 }
