@@ -3,6 +3,7 @@ import { VideoYoutube } from '../video';
 import { YoutubeService } from '../servicios/youtube.service';
 import { VideoDownloaderService } from '../servicios/video-downloader.service';
 import { MusicDownloaderService } from '../servicios/music-downloader.service';
+import { Usuario } from 'src/app/login/usuario/usuario';
 
 @Component({
   selector: 'app-youtube-player',
@@ -10,7 +11,7 @@ import { MusicDownloaderService } from '../servicios/music-downloader.service';
   styleUrls: ['./youtube-player.component.css']
 })
 export class YoutubePlayerComponent implements OnInit {
-
+  activeUser !: Usuario;
   video !: VideoYoutube
   constructor(private videoDownloader: VideoDownloaderService, 
               private musicDownloader: MusicDownloaderService ) { }
