@@ -18,6 +18,6 @@ export class YoutubeService {
   }
   downloadVideo(url: string){
     this.http.get("http://localhost:4000/download?URL="+url)
-    .subscribe(data => {console.log("Esto es una caca" + data)})
+    .subscribe(data => {console.log(data)})
   }
 }
