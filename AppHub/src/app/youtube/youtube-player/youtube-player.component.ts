@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../video';
+import { YoutubeService } from '../youtube.service';
 
 @Component({
   selector: 'app-youtube-player',
@@ -9,7 +10,7 @@ import { Video } from '../video';
 export class YoutubePlayerComponent implements OnInit {
 
   videoId !: string
-  constructor() { }
+  constructor(private yt: YoutubeService) { }
 
   ngOnInit() {
     this.videoId = sessionStorage.getItem('VideoId') as string;
@@ -18,4 +19,8 @@ export class YoutubePlayerComponent implements OnInit {
     document.body.appendChild(tag);
   }
 
+  downloadVideo(){
+    this.videoId = sessionStorage.getItem('VideoUrl') as string;
+    this.yt.downloadVideo(this.videoId);
+  }
 }

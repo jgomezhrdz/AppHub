@@ -14,10 +14,11 @@ export class YoutubeSearcherComponent {
   videos : Video[] = [];
 
   constructor(private youtube: YoutubeService, private router: Router) {
-   }
+  }
 
   watchVideo(video: Video){
     sessionStorage.setItem("VideoId", video.videoId)
+    sessionStorage.setItem("VideoUrl", video.videoUrl)
     this.router.navigateByUrl('/YoutubePlayer');
   }
   getVideosList(): void {
