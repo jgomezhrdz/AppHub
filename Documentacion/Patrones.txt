@@ -1,4 +1,4 @@
-Patrones que se pueden o van a aplicar (Tienen que ser mínimo 9 -- Actualmente 9):
+Patrones que se pueden o van a aplicar (Tienen que ser mínimo 9 -- Actualmente 8):
 
 Patrones de Creación (Mínimo 2 - Actualmente 3)
     - Builder: Para la creación de usuarios, tipo admin o guest 
@@ -10,8 +10,8 @@ Patrones de Creación (Mínimo 2 - Actualmente 3)
 Patrones Estructurales (Mínimo 2 - Actualmente 2)
     - Decorator o Proxy: Para el reproductor de youtube. Comprobar si es o no un usuario administrador
     para mostrar o no los botones de descarga
-    - Builder: para el buscador local de videos y música.
-        - Un buscador con varias formas de buscar.
+    - Bridge: para el buscador local de videos y música.
+        - Un buscador con varias formas de ordenar, una por id, otra por titulo.
 
 Patrones de Comportamiento (Mínimo 2 - Actualmente 3)
     - Strategy: para las estrategias del buscador de youtube
