@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FactoriaLogin } from './factoria-login';
+import { FachadaPeticionesService } from 'src/app/db-connection/fachada-peticiones.service';
+import { FactoriaEstrategiasRegister } from './estrategiasRegistro/factoria-estrategias-register';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,19 @@ import { FactoriaLogin } from './factoria-login';
 })
 export class RegisterComponent implements OnInit {
 
-  private valor : number = 1
-  private factorialogin = new FactoriaLogin();
-  constructor() { }
+  constructor(private fachada: FachadaPeticionesService){}
+
+  private valor : number = 1;
+  private id !: string;
+  private password !: string;
+  private factorialogin = new FactoriaEstrategiasRegister(this.fachada);
 
   ngOnInit(): void {
   }
 
   register(){
-
+    
+    this.factorialogin.crearEstrategia();
   }
 
   getValor(){

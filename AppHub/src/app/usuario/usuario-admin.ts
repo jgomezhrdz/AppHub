@@ -4,8 +4,8 @@ import { Usuario } from "./usuario";
 export class UsuarioAdmin extends Usuario{
     private user: Usuario;
 
-    constructor(user: Usuario){
-        super()
+    constructor(user: Usuario, id:string, password:string){
+        super(id, password)
         this.user = user;
     }
     downloadVideo(){

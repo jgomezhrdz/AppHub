@@ -13,6 +13,7 @@ import { MusicaOfflineModule } from './musica-offline/musica-offline.module';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import { DbConnectionModule } from './db-connection/db-connection.module';
 import { LoginModule } from './login/login.module';
+import { FachadaPeticionesService } from './db-connection/fachada-peticiones.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { LoginModule } from './login/login.module';
     HttpClientModule,
     DbConnectionModule
   ],
-  providers: [],
+  providers: [FachadaPeticionesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
