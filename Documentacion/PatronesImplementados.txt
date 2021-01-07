@@ -1,0 +1,17 @@
+Patrones de Creación (2)
+    - Singleton: Cada servicio es singleton (mañana especifico)
+    - Factory Method: hay dos factorias aplicadas junto con el patron Strategy.
+        -   Factoria de login
+        -   Factoria de Registro
+        Ambas sirven para crear la estrategia correspondiente para la peticion a la base de datos,
+        Una para registrar usuario o guest y otra para el login del usuario o guest
+Patrones Estructurales (1)
+    - Fachada de la base de datos: Se tiene creada una fachada que englobe los servicios
+    que contengan peticiones a la base de datos, ya sea crear, eliminar, login...
+
+Patrones de Comportamiento (1)
+    -   Estrategia: engloba la estrategia correspondiente, hay dos implementadas:
+        -   Registro de usuarios: una estrategia para la creacion de usuario y otra para la creacion 
+        de guest
+        -   Login de usuarios: una estrategia para el login de usuario y otra para el login 
+        de guest
