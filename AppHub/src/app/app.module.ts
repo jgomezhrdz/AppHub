@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { VideosOfflineModule } from './videos-offline/videos-offline.module';
 import { MusicaOfflineModule } from './musica-offline/musica-offline.module';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import { DbConnectionModule } from './db-connection/db-connection.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import 'bootstrap/dist/js/bootstrap.bundle';
     YoutubeModule,
     VideosOfflineModule,
     MusicaOfflineModule,
+    LoginModule,
     FormsModule,
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    DbConnectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

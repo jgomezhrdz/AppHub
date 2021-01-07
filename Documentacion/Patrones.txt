@@ -1,18 +1,19 @@
 Patrones que se pueden o van a aplicar (Tienen que ser mínimo 9 -- Actualmente 8/9):
 
-Patrones de Creación (Mínimo 2 - Actualmente 3)
-    - Builder: Para la creación de usuarios, tipo admin o guest 
-    - Prototype: Para la creacion de videos y musica descargada
+Patrones de Creación (Mínimo 2 - Actualmente 2)
+    - Builder o Factory Method: Para la creación de usuarios, tipo admin o guest 
     - Singleton: Para la conexion a la base de datos (el pool de conexiones) y para los videos y 
     canciones presentes (se tiene un hashmap en cada objeto y uera)
         - Los servicios que se crean son de tiplo singleton. SIUUU.
 
-Patrones Estructurales (Mínimo 2 - Actualmente 3)
+Patrones Estructurales (Mínimo 2 - Actualmente 4)
     - Decorator: Para el reproductor de youtube. Comprobar si es o no un usuario administrador
     para poder descargar o no (si tiene o no las funciones)
     - Bridge: para el buscador local de videos y música.
         - Un buscador con varias formas de ordenar, una por id, otra por titulo.
     - Fachada para las descargas: tiene ambas descargas, asi que solo se cambia en descargas.
+        - Fachada con las peticiones a la base de datos.
+    - Adapter: video de youtube a la interfaz del archivo de descarga.
 
 Patrones de Comportamiento (Mínimo 2 - Actualmente 3)
     - Strategy: para las estrategias del buscador de youtube
@@ -20,4 +21,5 @@ Patrones de Comportamiento (Mínimo 2 - Actualmente 3)
         - Busqueda por topic
     - Iterator: para recorrer la lista de objetos (videos o musica offline) #Hay que revisarlo
     - Command: para el comando de borrar, editar y deshacer (para la lista de videos o musica offline)
-    - State: dependiendo de si hay o no internet, y si se ha iniciado sesion o no.
+        - Memento: guardar el estado de la lista de videos.
+    - State?: dependiendo de si hay o no internet, y si se ha iniciado sesion o no.

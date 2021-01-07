@@ -11,7 +11,7 @@ export class VideoDownloaderService {
 
   constructor(private http:HttpClient, private listaVideos: ListaVideosService) { }
   
-  downloadVideo(video: VideoYoutube,){
+  downloadVideo(video: VideoYoutube){
     const url: string = video.videoUrl;
     const title: string = video.title;
     this.http.get("http://localhost:4000/download/video?url="+url+"&title="+title)

@@ -22,13 +22,13 @@ class UserController {
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ?', [id]);
+            const { email } = req.params;
+            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ?', [email]);
             console.log(user.length);
             if (user.length > 0) {
                 return res.json(user[0]);
             }
-            res.status(404).json({ text: "The game doesn't exits" });
+            res.status(404).json({ text: "The user does not exist" });
         });
     }
     create(req, res) {
@@ -39,17 +39,18 @@ class UserController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
+            const { email } = req.params;
             const oldGame = req.body;
-            yield dbConnection_1.default.query('UPDATE user set ? WHERE email = ?', [req.body, id]);
+            yield dbConnection_1.default.query('UPDATE user set ? WHERE email = ?', [req.body, email]);
+            res.status(404).json({ text: "The user does not exist" });
             res.json({ message: "The user was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield dbConnection_1.default.query('DELETE FROM user WHERE email = ?', [id]);
-            res.json({ message: "The game was deleted" });
+            const { email } = req.params;
+            yield dbConnection_1.default.query('DELETE FROM user WHERE email = "?"', [email]);
+            res.json({ message: "The user was deleted" });
         });
     }
 }

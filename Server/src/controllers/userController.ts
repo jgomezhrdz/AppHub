@@ -9,13 +9,14 @@ class UserController {
     }
 
     public async getOne(req: Request, res: Response): Promise<any> {
-        const { id } = req.params;
-        const user = await pool.query('SELECT * FROM user WHERE email = ?', [id]);
+        const { email } = req.params;
+
+        const user = await pool.query('SELECT * FROM user WHERE email = ?', [email]);
         console.log(user.length);
         if (user.length > 0) {
             return res.json(user[0]);
         }
-        res.status(404).json({ text: "The game doesn't exits" });
+        res.status(404).json({ text: "The user does not exist" });
     }
 
     public async create(req: Request, res: Response): Promise<void> {
@@ -24,16 +25,17 @@ class UserController {
     }
 
     public async update(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
+        const { email } = req.params;
         const oldGame = req.body;
-        await pool.query('UPDATE user set ? WHERE email = ?', [req.body, id]);
+        await pool.query('UPDATE user set ? WHERE email = ?', [req.body, email]);
+        res.status(404).json({ text: "The user does not exist" });
         res.json({ message: "The user was Updated" });
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
-        const { id } = req.params;
-        await pool.query('DELETE FROM user WHERE email = ?', [id]);
-        res.json({ message: "The game was deleted" });
+        const { email } = req.params;
+        await pool.query('DELETE FROM user WHERE email = "?"', [email]);
+        res.json({ message: "The user was deleted" });
     }
 }
 

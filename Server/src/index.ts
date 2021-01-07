@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import defalutRoutes from './routes/defaultRoutes';
 import userRoutes from './routes/userRoutes';
+import guestRoutes from './routes/guestRoutes';
 class Server{
 
     app: express.Application;
@@ -25,6 +26,7 @@ class Server{
     private routes(): void{
         this.app.use('/', defalutRoutes);
         this.app.use('/api/users', userRoutes);
+        this.app.use('/api/guests', guestRoutes);
     }
 
     public start(): void{
