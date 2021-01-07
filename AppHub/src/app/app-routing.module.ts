@@ -13,7 +13,7 @@ import { YoutubeSearcherComponent } from './youtube/youtube-searcher/youtube-sea
 import { YoutubeModule } from './youtube/youtube.module';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'YoutubeSearch', component: YoutubeSearcherComponent },
   { path: 'YoutubePlayer', component: YoutubePlayerComponent },

@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dbConnection_1 = __importDefault(require("../dbConnection/dbConnection"));
+var crypto = require('crypto');
 class UserController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,13 +23,26 @@ class UserController {
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email } = req.params;
+            const { email } = req.query;
             const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ?', [email]);
+            console.log(req);
             console.log(user.length);
             if (user.length > 0) {
                 return res.json(user[0]);
             }
             res.status(404).json({ text: "The user does not exist" });
+        });
+    }
+    login(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email, password } = req.query;
+            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE username = ? and password = ?', [email, password]);
+            console.log(user.length);
+            console.log(req.query);
+            if (user.length > 0) {
+                return res.json({ "token": crypto.randomBytes(64).toString('hex') });
+            }
+            res.status(404).json({ text: "The guest doesn't exits" });
         });
     }
     create(req, res) {
@@ -39,8 +53,7 @@ class UserController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email } = req.params;
-            const oldGame = req.body;
+            const { email } = req.query;
             yield dbConnection_1.default.query('UPDATE user set ? WHERE email = ?', [req.body, email]);
             res.status(404).json({ text: "The user does not exist" });
             res.json({ message: "The user was Updated" });
@@ -48,7 +61,7 @@ class UserController {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email } = req.params;
+            const { email } = req.query;
             yield dbConnection_1.default.query('DELETE FROM user WHERE email = "?"', [email]);
             res.json({ message: "The user was deleted" });
         });

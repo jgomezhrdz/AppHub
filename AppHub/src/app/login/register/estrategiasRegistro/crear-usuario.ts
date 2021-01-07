@@ -8,7 +8,7 @@ export class CrearUsuario implements Estrategia{
     constructor(private peticiones: FachadaPeticionesService){
 
     }
-    ejecutar(usuario: UsuarioAdmin) {
+    ejecutar(usuario: Usuario) {
         this.peticiones.registrarUsuario(usuario)
     }
 

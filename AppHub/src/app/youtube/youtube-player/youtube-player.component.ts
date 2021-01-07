@@ -3,7 +3,7 @@ import { VideoYoutube } from '../video';
 import { YoutubeService } from '../servicios/youtube.service';
 import { VideoDownloaderService } from '../servicios/video-downloader.service';
 import { MusicDownloaderService } from '../servicios/music-downloader.service';
-import { Usuario } from 'src/app/login/usuario/usuario';
+import { Usuario } from 'src/app/usuario/usuario';
 
 @Component({
   selector: 'app-youtube-player',

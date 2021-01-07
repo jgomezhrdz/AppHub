@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import pool from '../dbConnection/dbConnection';
+var crypto = require('crypto');
 
 class UserController {
 
@@ -9,11 +10,24 @@ class UserController {
     }
 
     public async getOne(req: Request, res: Response): Promise<any> {
-        const { username} = req.params;
+        const { username} = req.query;
         const user = await pool.query('SELECT * FROM guest WHERE username = ?', [username]);
         console.log(user.length);
         if (user.length > 0) {
             return res.json(user[0]);
+        }
+        res.status(404).json({ text: "The guest doesn't exits" });
+    }
+
+    public async login(req: Request, res: Response): Promise<any> {
+        const { username, password} = req.query;
+        const user = await pool.query('SELECT * FROM guest WHERE username = ? and password = ?', 
+                                        [username, password]);
+        console.log(user.length);
+        console.log(req.query)
+
+        if (user.length > 0) {
+            return res.json({"token": crypto.randomBytes(64).toString('hex')});
         }
         res.status(404).json({ text: "The guest doesn't exits" });
     }
@@ -25,12 +39,12 @@ class UserController {
         catch (e) {
             console.error('Error Occurred', e);
           }
+          console.log(req.body)
         res.json({ message: res.statusMessage });
     }
 
     public async update(req: Request, res: Response): Promise<void> {
-        const { username } = req.params;
-        const oldGame = req.body;
+        const { username } = req.query;
         await pool.query('UPDATE guest set ? WHERE username =  ?', [req.body, username]);
         res.json({ message: "The guest was Updated" });
     }

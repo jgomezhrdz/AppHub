@@ -12,10 +12,11 @@ class guestRoutes {
 
     config() {
         this.router.get('/', guestController.list);
-        this.router.get('/:username', guestController.getOne);
+        this.router.get('/login', guestController.login);        
+        this.router.get('/username', guestController.getOne);
         this.router.post('/', guestController.create);
-        this.router.put('/:username', guestController.update);
-        this.router.delete('/:username', guestController.delete);
+        this.router.put('/username', guestController.update);
+        this.router.delete('/username', guestController.delete);
     }
 
 }

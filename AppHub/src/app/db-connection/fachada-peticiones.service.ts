@@ -33,7 +33,4 @@ export class FachadaPeticionesService {
     this.peticionesGuest.inicioSesionUsuario(usuario);
   }
 
-  getInstancia(){
-    return this;
-  }
 }

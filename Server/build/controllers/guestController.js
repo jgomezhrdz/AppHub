@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dbConnection_1 = __importDefault(require("../dbConnection/dbConnection"));
+var crypto = require('crypto');
 class UserController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,11 +23,23 @@ class UserController {
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username } = req.params;
+            const { username } = req.query;
             const user = yield dbConnection_1.default.query('SELECT * FROM guest WHERE username = ?', [username]);
             console.log(user.length);
             if (user.length > 0) {
                 return res.json(user[0]);
+            }
+            res.status(404).json({ text: "The guest doesn't exits" });
+        });
+    }
+    login(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { username, password } = req.query;
+            const user = yield dbConnection_1.default.query('SELECT * FROM guest WHERE username = ? and password = ?', [username, password]);
+            console.log(user.length);
+            console.log(req.query);
+            if (user.length > 0) {
+                return res.json({ "token": crypto.randomBytes(64).toString('hex') });
             }
             res.status(404).json({ text: "The guest doesn't exits" });
         });
@@ -39,13 +52,13 @@ class UserController {
             catch (e) {
                 console.error('Error Occurred', e);
             }
+            console.log(req.body);
             res.json({ message: res.statusMessage });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username } = req.params;
-            const oldGame = req.body;
+            const { username } = req.query;
             yield dbConnection_1.default.query('UPDATE guest set ? WHERE username =  ?', [req.body, username]);
             res.json({ message: "The guest was Updated" });
         });

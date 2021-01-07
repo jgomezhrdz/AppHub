@@ -12,10 +12,11 @@ class userRoutes {
     }
     config() {
         this.router.get('/', userController_1.default.list);
-        this.router.get('/:email', userController_1.default.getOne);
+        this.router.get('/email', userController_1.default.getOne);
+        this.router.get('/login', userController_1.default.login);
         this.router.post('/', userController_1.default.create);
-        this.router.put('/:email', userController_1.default.update);
-        this.router.delete('/:email', userController_1.default.delete);
+        this.router.put('/email', userController_1.default.update);
+        this.router.delete('/email', userController_1.default.delete);
     }
 }
 exports.default = new userRoutes().router;
