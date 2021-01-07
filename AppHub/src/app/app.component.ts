@@ -14,6 +14,13 @@ export class AppComponent implements DoCheck, OnInit{
     sessionStorage.removeItem("token")
   }
   ngDoCheck(): void {
-    
+    if(sessionStorage.getItem("token") != null && this.router.url === "/Login"){
+      this.sesionIniciada = true;
+      this.router.navigateByUrl("/YoutubeSearch")
+    }
+    else if(sessionStorage.getItem("token") == null && this.router.url != "/Login"){
+      console.log(this.router.url)
+      this.router.navigateByUrl("Login")
+    }  
   }
 }

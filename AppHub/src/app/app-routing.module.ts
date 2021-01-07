@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { BuscadorMusicaComponent } from './musica-offline/buscador-musica/buscador-musica.component';
@@ -13,6 +14,7 @@ import { YoutubeSearcherComponent } from './youtube/youtube-searcher/youtube-sea
 import { YoutubeModule } from './youtube/youtube.module';
 
 const routes: Routes = [
+  { path: '', component: AppComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'YoutubeSearch', component: YoutubeSearcherComponent },
