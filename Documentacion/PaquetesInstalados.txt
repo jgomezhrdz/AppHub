@@ -2,6 +2,8 @@ npm install @angular/cli -g
 npm install boostrap
 npm install bootstrap jquery @popperjs/core
 npm install @angular/youtube-player
+npm i ng-connection-service
+//SERVER
 npm i mysql 
 npm i express morgan promise-mysql cors
 npm install -g typescript
@@ -9,4 +11,5 @@ npm i nodemon -D
 npm i @types/express -D 
 npm i promise-mysql@3.3.1 
 npm install youtube-dl
+
  

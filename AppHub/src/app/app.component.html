@@ -1,7 +1,7 @@
-<nav *ngIf="sesionIniciada" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav *ngIf="controladorEstados.sesionIniciada" class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="YoutubeSearch">Youtube<span class="sr-only">(current)</span></a>
+        <a *ngIf="controladorEstados.conInternet" class="nav-item nav-link active" href="YoutubeSearch">Youtube<span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link active" href="busquedaVideoOff">Videos offline</a>
         <a class="nav-item nav-link active" href="busquedaMusicaOff">Music offline</a>
       </div>
