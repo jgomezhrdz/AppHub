@@ -14,7 +14,6 @@ export class AppComponent implements DoCheck, OnInit{
   this.controladorEstados = new ControladorEstados(this.router)
   }
   ngOnInit(): void {
-    sessionStorage.removeItem("token")
   }
   ngDoCheck(): void {
   this.controladorEstados.comprobarEstado();

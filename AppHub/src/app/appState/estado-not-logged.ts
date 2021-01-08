@@ -17,12 +17,13 @@ export class EstadoNotLogged implements Estado{
             controlador.setState(new EstadoLogged(this.router))
             controlador.comprobarEstado();
         }
-        else if(sessionStorage.getItem("token") == null && this.router.url != "/Login"){
+        else if(sessionStorage.getItem("token") == null 
+        && (this.router.url != "/Login" && this.router.url != "/Register")){
             controlador.sesionIniciada = false;
             console.log(this.router.url)
             this.router.navigateByUrl("Login")
         }  
-        else if(!navigator.plugins){
+        else if(!navigator.onLine){
             controlador.conInternet = false;
             controlador.setState(new EstadoSinInternet(this.router))
             controlador.comprobarEstado();

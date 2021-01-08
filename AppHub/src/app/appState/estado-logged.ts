@@ -9,7 +9,8 @@ export class EstadoLogged implements Estado{
         
     }
     ejecutar(controlador: ControladorEstados): void {
-        if(sessionStorage.getItem("token") != null && this.router.url === "/Login"){
+        if(sessionStorage.getItem("token") != null 
+        && (this.router.url === "/Login" || this.router.url === "/Register")){
             this.router.navigateByUrl("/YoutubeSearch")
         }
         else if(!window.navigator.onLine){
