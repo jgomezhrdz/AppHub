@@ -9,11 +9,11 @@ export class ListaVideosService {
 
   constructor() { }
 
-  listaVideos = new Array();
+  listaVideos = new Array<Video>();
   iterador = this.listaVideos[Symbol.iterator];
   
   borrarVideo(video: Video): void{
-    if(this.listaVideos.includes(video.getId())){
+    if(this.listaVideos.includes(video)){
       this.listaVideos.splice(this.listaVideos.indexOf(video), 1)
    }
    else{
@@ -21,6 +21,7 @@ export class ListaVideosService {
    }
   }
   añadirVideo(video: Video): void{
+      localStorage.setItem(video.getId(), JSON.stringify(video))
       this.listaVideos.push(video)
   }
 }

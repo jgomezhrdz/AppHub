@@ -5,9 +5,12 @@ Patrones de Creación (2)
         -   Factoria de Registro
         Ambas sirven para crear la estrategia correspondiente para la peticion a la base de datos,
         Una para registrar usuario o guest y otra para el login del usuario o guest
-Patrones Estructurales (1)
+Patrones Estructurales (2)
     - Fachada de la base de datos: Se tiene creada una fachada que englobe los servicios
     que contengan peticiones a la base de datos, ya sea crear, eliminar, login...
+    - Bride: implementado para el buscador de videos offline. La abstraccion funcional sería el buscador
+    y las implementaciones serían las formas de busqueda, por titulo y por id, devolviendo cada uno
+    aquellos que contienen un porcentaje similar al 50%.
 
 Patrones de Comportamiento (2)
     -   Estrategia: engloba la estrategia correspondiente, hay dos implementadas:

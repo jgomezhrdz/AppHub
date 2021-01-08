@@ -7,10 +7,11 @@ export class Video {
         this.id = id;
     }
 
-    getTitle(){
-        return this.title
+    getTitle(): string{
+        return(this.title)
     }
-    getId(){
-        return this.id
+
+    getId(): string{
+        return(this.id)
     }
 }

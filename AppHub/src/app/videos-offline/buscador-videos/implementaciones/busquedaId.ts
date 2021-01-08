@@ -1,10 +1,12 @@
 import { ListaVideosService } from "../../lista-videos.service";
 import { Implementacion } from "./implementacion";
 
-export class BusquedaTitulo implements Implementacion{
+export class BusquedaId implements Implementacion{
+
     constructor(private listaVideos: ListaVideosService){
 
     }
+
     buscar(valor: string): Array<any> {
         var coincidentes = new Array();
         this.listaVideos.listaVideos.forEach(element =>{

@@ -9,14 +9,14 @@ import {YoutubeService} from './youtube/servicios/youtube.service'
 })
 export class AppComponent implements DoCheck, OnInit{
   title = 'AppHub';
-  controladorEstados: ControladorEstados
+  //controladorEstados: ControladorEstados
   constructor(private router: Router){
-    this.controladorEstados = new ControladorEstados(this.router)
+    //this.controladorEstados = new ControladorEstados(this.router)
   }
   ngOnInit(): void {
     sessionStorage.removeItem("token")
   }
   ngDoCheck(): void {
-    this.controladorEstados.comprobarEstado();
+  //  this.controladorEstados.comprobarEstado();
   }
 }

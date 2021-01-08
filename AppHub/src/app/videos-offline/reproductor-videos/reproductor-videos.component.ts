@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaVideosService } from '../lista-videos.service';
 import { Video } from '../video';
 
 @Component({
@@ -10,10 +9,12 @@ import { Video } from '../video';
 export class ReproductorVideosComponent implements OnInit {
 
   videoActual !: Video;
-  constructor(private listaVideos: ListaVideosService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.videoActual = JSON.parse(sessionStorage.getItem("VideoOff") as string) as Video
+    console.log(this.videoActual)
+    var aux = (JSON.parse(sessionStorage.getItem("videoOff") as string))
+    this.videoActual = new Video(aux.title, aux.id)
   }
 
 }
