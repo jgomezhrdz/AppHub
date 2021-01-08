@@ -9,9 +9,12 @@ Patrones Estructurales (1)
     - Fachada de la base de datos: Se tiene creada una fachada que englobe los servicios
     que contengan peticiones a la base de datos, ya sea crear, eliminar, login...
 
-Patrones de Comportamiento (1)
+Patrones de Comportamiento (2)
     -   Estrategia: engloba la estrategia correspondiente, hay dos implementadas:
         -   Registro de usuarios: una estrategia para la creacion de usuario y otra para la creacion 
         de guest
         -   Login de usuarios: una estrategia para el login de usuario y otra para el login 
         de guest
+    -   State: se ha implementado el control de estados de la aplicación mediante el patrón State,
+        indicando si esta offline, sin loggear o loggeado, ejecutando el consiguiente estado
+        correspondiente.
