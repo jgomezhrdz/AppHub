@@ -20,7 +20,6 @@ export class EstadoNotLogged implements Estado{
         else if(sessionStorage.getItem("token") == null 
         && (this.router.url != "/Login" && this.router.url != "/Register")){
             controlador.sesionIniciada = false;
-            console.log(this.router.url)
             this.router.navigateByUrl("Login")
         }  
         else if(!navigator.onLine){

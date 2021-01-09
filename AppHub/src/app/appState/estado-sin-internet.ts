@@ -12,6 +12,5 @@ export class EstadoSinInternet implements Estado{
             controlador.setState(new EstadoNotLogged(this.router))
             controlador.comprobarEstado();
         }
-        console.log(window.navigator.onLine)
     }
 }

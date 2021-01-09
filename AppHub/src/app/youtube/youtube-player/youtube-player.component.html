@@ -6,10 +6,14 @@
         [height]="400"
         [width]="800">
         </youtube-player>
-        <div align = "center">
-            <button class="btn btn-outline-dark" (click)="downloadVideo()">DOWNLOAD_MP4</button>
+        <div *ngIf="getActive()" align = "center">
+            <button type="button" class="btn btn-outline-dark" (click)="downloadVideo()">DOWNLOAD_MP4</button>
             <button type="button" class="btn btn-outline-primary" (click)="downloadMusic()">DOWNLOAD_MP3</button>
         </div>
+        <div *ngIf="!getActive()" align = "center">
+            <button type="button" class="btn btn-outline-dark" disabled>DOWNLOAD_MP4</button>
+            <button type="button" class="btn btn-outline-primary" disabled>DOWNLOAD_MP3</button>
+        <div>
     </div>
 </div>
 

@@ -33,6 +33,18 @@ class UserController {
             res.status(404).json({ text: "The user does not exist" });
         });
     }
+    exists(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email } = req.query;
+            const user = yield dbConnection_1.default.query('SELECT EXISTS(SELECT * FROM user WHERE email = ?)', [email]);
+            var returned = "EXISTS(SELECT * FROM user WHERE email = '" + email + "')";
+            console.log(returned);
+            if (user.length > 0) {
+                return res.json(user[0][returned]);
+            }
+            res.status(404).json({ text: "The user does not exist" });
+        });
+    }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.query;

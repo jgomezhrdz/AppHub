@@ -12,7 +12,6 @@ export class ControladorEstados {
     }
 
     comprobarEstado(){
-        console.log(this.estadoActual)
         this.estadoActual.ejecutar(this);
     }
 

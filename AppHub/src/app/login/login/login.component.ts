@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   inicioSesion(){
     var usuario = new Usuario(this.id, this.password)
     this.factorialogin.crearEstrategia(this.valor).ejecutar(usuario)
+    sessionStorage.setItem("Usuario", JSON.stringify(usuario))
   }
 
   registro(){

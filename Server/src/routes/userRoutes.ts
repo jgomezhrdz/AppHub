@@ -13,6 +13,7 @@ class userRoutes {
     config() {
         this.router.get('/', userController.list);
         this.router.get('/email', userController.getOne);
+        this.router.get('/exists', userController.exists);
         this.router.get('/login', userController.login);   
         this.router.post('/', userController.create);
         this.router.put('/email', userController.update);

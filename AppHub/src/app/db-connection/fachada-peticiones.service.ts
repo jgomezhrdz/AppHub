@@ -10,27 +10,27 @@ export class FachadaPeticionesService {
 
   constructor(private peticionesUsuario: PeticionesUserService, private peticionesGuest: PeticionesGuestService) { }
   registrarUsuario(usuario: Usuario){
-    this.peticionesUsuario.registrarUsuario(usuario);
+    return this.peticionesUsuario.registrarUsuario(usuario);
   }
 
   comprobarUsuario(email: string){
-    this.peticionesUsuario.comprobarUsuario(email);
+    return this.peticionesUsuario.comprobarUsuario(email);
   }
 
   inicioSesionUsuario(usuario: Usuario){
-    this.peticionesUsuario.inicioSesionUsuario(usuario);
+    return this.peticionesUsuario.inicioSesionUsuario(usuario);
   }
 
   registrarUsuarioGuest(usuario: Usuario){
-    this.peticionesGuest.registrarUsuario(usuario);
+    return this.peticionesGuest.registrarUsuario(usuario);
   }
 
   comprobarUsuarioGuest(email: string){
-    this.peticionesGuest.comprobarUsuario(email);
+    return this.peticionesGuest.comprobarUsuario(email);
   }
 
   inicioSesionUsuarioGuest(usuario: Usuario){
-    this.peticionesGuest.inicioSesionUsuario(usuario);
+    return this.peticionesGuest.inicioSesionUsuario(usuario);
   }
 
 }

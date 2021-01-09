@@ -20,6 +20,17 @@ class UserController {
         res.status(404).json({ text: "The user does not exist" });
     }
 
+    public async exists(req: Request, res: Response): Promise<any> {
+        const { email } = req.query;
+        const user = await pool.query('SELECT EXISTS(SELECT * FROM user WHERE email = ?)', [email]);
+        var returned = "EXISTS(SELECT * FROM user WHERE email = '"+email+"')"
+        console.log(returned)
+        if (user.length > 0) {
+            return res.json(user[0][returned]);
+        }
+        res.status(404).json({ text: "The user does not exist" });
+    }
+
     public async login(req: Request, res: Response): Promise<any> {
         const { email, password} = req.query;
         const user = await pool.query('SELECT * FROM user WHERE username = ? and password = ?', 

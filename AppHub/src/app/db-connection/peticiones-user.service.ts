@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../usuario/usuario';
+import { UsuarioComun } from '../usuario/usuario-comun';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,10 @@ export class PeticionesUserService {
     )
   }
 
-  comprobarUsuario(email: string){
-    var extension = "email?email="
-    this.http.get(this.url+extension+email).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    )
+   async comprobarUsuario(email: string): Promise<any>{
+    var presente = false;
+    var extension = "exists?email="
+    return (await this.http.get(this.url+extension+email).toPromise())
   }
 
   inicioSesionUsuario(usuario: Usuario){
