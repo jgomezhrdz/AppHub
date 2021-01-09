@@ -1,11 +1,10 @@
 <div class = "panel">
     <div class="form-group">
       <label for="exampleInput">Search Video
-        <select class = "btn btn-secondary btn-sm dropdown-toggle" ng-model="test" ng-disabled="!enabled">
-          <option value="">A</option>
-          <option value="">B</option>
-          <option value="">C</option>
-          <option value="">D</option>
+        <select class = "btn btn-secondary btn-sm dropdown-toggle" [(ngModel)]="implementacion" (change)="change($event)" [ngModelOptions]="{standalone: true}">
+          <option value="0">KeyWord</option>
+          <option value="1">Category</option>
+          
           </select>
       </label>
       <input [(ngModel)]="keyword" name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>

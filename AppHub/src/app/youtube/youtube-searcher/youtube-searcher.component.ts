@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { VideoYoutube } from '../video';
 import { YoutubeService } from '../servicios/youtube.service';
 import {Router} from '@angular/router';
+import { EstrategiaBusqueda } from './Estrategias/estrategia-busqueda';
+import { FactoriaEstrategiasBusqueda } from './factoria-estrategias-busqueda';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-youtube-searcher',
@@ -12,8 +15,9 @@ import {Router} from '@angular/router';
 export class YoutubeSearcherComponent {
   keyword !: string;
   videos : VideoYoutube[] = [];
-
-  constructor(private youtube: YoutubeService, private router: Router) {
+  estrategia !: EstrategiaBusqueda;
+  private factoriaEstrategias = new FactoriaEstrategiasBusqueda(this.youtube, this.http)
+  constructor(private youtube: YoutubeService, private router: Router, private http: HttpClient) {
   }
 
   watchVideo(video: VideoYoutube){
@@ -21,7 +25,7 @@ export class YoutubeSearcherComponent {
     this.router.navigateByUrl('/YoutubePlayer');
   }
   getVideosList(): void {
-    this.youtube.getVideos(this.keyword).subscribe(
+    this.estrategia.getVideos(this.keyword).subscribe(
       (data) => {
         console.log(data.items)
         this.videos = data.items.map((item: any) => {
@@ -39,6 +43,10 @@ export class YoutubeSearcherComponent {
           return video
         })
     }) 
+  }
+
+  change(e: any){
+    this.estrategia = this.factoriaEstrategias.crearEstrategia(e.target.value);
   }
 
 }

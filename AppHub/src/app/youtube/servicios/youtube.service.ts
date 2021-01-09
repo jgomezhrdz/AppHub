@@ -10,12 +10,16 @@ import { ListaVideosService } from '../../videos-offline/lista-videos.service'
 
 export class YoutubeService {
   private API_KEY = "AIzaSyB5is2OQmXbsuej06V3Uawi9NDzxTgZrLw"
+  private url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10"
+
   constructor(private http:HttpClient) { 
   }
 
-  getVideos(_keyWord: string): Observable<any>{
-    const url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=+"+_keyWord+"&type=video&videoCaption=closedCaption&key="+this.API_KEY+""
-    return this.http.get<any>(url)
+  getKey(){
+    return this.API_KEY
   }
-  
+
+  getUrl(){
+    return this.url
+  }
 }

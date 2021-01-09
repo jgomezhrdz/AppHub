@@ -3,16 +3,15 @@ import { Observable } from "rxjs"
 import { YoutubeService } from "../../servicios/youtube.service"
 import { EstrategiaBusqueda } from "./estrategia-busqueda"
 
-export class BusquedaKeyWord implements EstrategiaBusqueda{
-    private url = "&q="
-    private url2 = "&type=video&videoCaption=closedCaption&key="
+export class BusquedaCategoria implements EstrategiaBusqueda{
+    private url = "&videoCategoryId=ss"
+    private url2 ="&key="
 
     constructor(private yt: YoutubeService, private http: HttpClient){
-    }
 
-    getVideos(_keyWord: string): Observable<any>{
-        const url = this.yt.getUrl()+this.url+_keyWord+this.url2+this.yt.getKey
+    }
+    getVideos(categoryId: string): Observable<any>{
+        const url = this.yt.getUrl()+this.url+categoryId+this.url2+this.yt.getKey
         return this.http.get<any>(this.url)
       }
-
 }
