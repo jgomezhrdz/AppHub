@@ -25,8 +25,7 @@ export class BuscadorVideosComponent implements OnInit {
 
   buscar(){
     this.listaCoincidentes = this.implementacion.buscar(this.valor)
-    this.listaCoincidentes.push(
-      new Video("[720p HD] DanMachi - Bell Vs. Minotaur with Sword", "jjjj"))
+    
   }
 
   watch(video: Video){
@@ -35,7 +34,6 @@ export class BuscadorVideosComponent implements OnInit {
     this.router.navigateByUrl("reproductorVideoOff")
   }
   change(e: any){
-    
     this.implementacion = this.implementaciones[e.target.value];
     console.log(this.implementacion);
   }

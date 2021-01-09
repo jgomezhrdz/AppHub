@@ -16,7 +16,7 @@ export class VideoDownloaderService {
     const title: string = video.title;
     this.http.get("http://localhost:4000/download/video?url="+url+"&title="+title)
     .subscribe(data => {console.log(data)})
-    var videoOff = new Video(video.videoId, video.title)
+    var videoOff = new Video(video.title, video.videoId)
     this.listaVideos.añadirVideo(videoOff)
   }
 }

@@ -8,14 +8,19 @@ import { VideoYoutube } from '../youtube/video';
 export class ListaVideosService {
 
 
-  listaVideos = new Array<Video>();
-  iterador = this.listaVideos[Symbol.iterator];
+  listaVideos !: Array<Video>;
   
   constructor() {
-    this.listaVideos = JSON.parse(localStorage.getItem("Videos") as string) as Array<Video>
-   }
+    this.listaVideos = new Array<Video>();
+    var aux = JSON.parse(localStorage.getItem("Videos") as string) as Array<any>;
+    if((aux != null && aux != undefined) && aux.length != undefined){ 
+      aux.forEach(elem =>{
+        this.listaVideos.push(new Video(elem.title, elem.id))
+      }) 
+    }   
+}
   borrarVideo(video: Video): void{
-    if(this.listaVideos.includes(video)){
+    if(!this.listaVideos.every(elem => {elem != video})){
       this.listaVideos.splice(this.listaVideos.indexOf(video), 1)
    }
    else{
@@ -23,8 +28,8 @@ export class ListaVideosService {
    }
   }
   añadirVideo(video: Video): void{
-    this.listaVideos.push(video)
-    localStorage.setItem("Videos", JSON.stringify(this.listaVideos))
-      
+    if(this.listaVideos.every(elem => {elem != video})) this.listaVideos.push(video)
+    console.log(this.listaVideos.values)
+    localStorage.setItem("Videos", JSON.stringify(this.listaVideos))  
   }
 }

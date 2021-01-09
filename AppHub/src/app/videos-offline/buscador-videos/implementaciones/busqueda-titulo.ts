@@ -8,7 +8,7 @@ export class BusquedaTitulo implements Implementacion{
     buscar(valor: string): Array<any> {
         var coincidentes = new Array();
         this.listaVideos.listaVideos.forEach(element =>{
-            if(this.similar(element.getId(), valor)>=50){
+            if(this.similar(element.getId(), valor)>=0){
                 coincidentes.push(element)
             }
         })

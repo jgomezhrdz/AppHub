@@ -7,16 +7,25 @@
               
               </select>
         </label>
-      <input name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
+      <input name="keyword" [(ngModel)]="valor" class="form-control" id="exampleInput" placeholder="Keywords..."/>
       <small id="emailHelp" class="form-text text-muted">Enter the keyword you want to search for.</small>
     </div>
     <button type="button" class="btn btn-primary" (click) = "buscar()">Search</button>
 </form>
 
-
-<div class="ui four column grid" *ngFor="let coincidente of listaCoincidentes">
+<div class="ui four column grid">
+  <div class="column" *ngFor="let coincidente of listaCoincidentes">
+    <div class="ui card">
+      <div class="content">
+        <a class="header" style="margin: 1em 0 1em 0;">{{ coincidente.getTitle() }}</a>
+        <div class="meta">
+          <span class="ui right floated date" style="font-weight: bolder;">ID: {{ coincidente.getId() }}</span>
+        </div>
+      </div>
+    </div>
     <button class="btn btn-outline-dark" (click)="watch(coincidente)">
       <i class="external alternate icon"></i>
       Watch
     </button>
+  </div>
 </div>

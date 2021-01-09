@@ -18,6 +18,7 @@ export class YoutubePlayerComponent implements OnInit {
 
   ngOnInit() {
     this.video = JSON.parse(sessionStorage.getItem('Video') as string) as VideoYoutube
+    this.video.videoUrl = "https://www.youtube.com/watch?v=txUAbIhnUDc"
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.body.appendChild(tag);
