@@ -7,11 +7,13 @@ import { VideoYoutube } from '../youtube/video';
 
 export class ListaVideosService {
 
-  constructor() { }
 
   listaVideos = new Array<Video>();
   iterador = this.listaVideos[Symbol.iterator];
   
+  constructor() {
+    this.listaVideos = JSON.parse(localStorage.getItem("Videos") as string) as Array<Video>
+   }
   borrarVideo(video: Video): void{
     if(this.listaVideos.includes(video)){
       this.listaVideos.splice(this.listaVideos.indexOf(video), 1)
@@ -21,7 +23,8 @@ export class ListaVideosService {
    }
   }
   añadirVideo(video: Video): void{
-      localStorage.setItem(video.getId(), JSON.stringify(video))
-      this.listaVideos.push(video)
+    this.listaVideos.push(video)
+    localStorage.setItem("Videos", JSON.stringify(this.listaVideos))
+      
   }
 }

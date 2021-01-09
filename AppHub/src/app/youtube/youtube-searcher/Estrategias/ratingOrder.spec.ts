@@ -1,4 +1,4 @@
-import { BusquedaKeyWord } from './busqueda-key-word';
+import { ratingOrder } from './ratingOrder';
 
 describe('BusquedaKeyWord', () => {
   it('should create an instance', () => {

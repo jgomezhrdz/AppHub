@@ -1,9 +1,9 @@
 <div class = "panel">
     <div class="form-group">
       <label for="exampleInput">Search Video
-        <select class = "btn btn-secondary btn-sm dropdown-toggle" [(ngModel)]="implementacion" (change)="change($event)" [ngModelOptions]="{standalone: true}">
-          <option value="0">KeyWord</option>
-          <option value="1">Category</option>
+        <select class = "btn btn-secondary btn-sm dropdown-toggle" [(ngModel)] = "estrategiaSeleccionada"  [ngModelOptions]="{standalone: true}" (change)="change($event)">
+          <option value="1">Rating</option>
+          <option value="2">Date</option>
           
           </select>
       </label>

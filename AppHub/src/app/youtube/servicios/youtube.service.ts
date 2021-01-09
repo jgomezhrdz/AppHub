@@ -11,15 +11,15 @@ import { ListaVideosService } from '../../videos-offline/lista-videos.service'
 export class YoutubeService {
   private API_KEY = "AIzaSyB5is2OQmXbsuej06V3Uawi9NDzxTgZrLw"
   private url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10"
-
   constructor(private http:HttpClient) { 
-  }
-
-  getKey(){
-    return this.API_KEY
   }
 
   getUrl(){
     return this.url
   }
+
+  getKey(){
+    return this.API_KEY
+  }
+  
 }

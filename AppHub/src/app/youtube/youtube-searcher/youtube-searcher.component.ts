@@ -16,6 +16,7 @@ export class YoutubeSearcherComponent {
   keyword !: string;
   videos : VideoYoutube[] = [];
   estrategia !: EstrategiaBusqueda;
+  estrategiaSeleccionada !: number;
   private factoriaEstrategias = new FactoriaEstrategiasBusqueda(this.youtube, this.http)
   constructor(private youtube: YoutubeService, private router: Router, private http: HttpClient) {
   }

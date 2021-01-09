@@ -13,6 +13,7 @@ import { Implementacion } from './implementaciones/implementacion';
 })
 export class BuscadorVideosComponent implements OnInit {
   implementacion !: Implementacion;
+  implementacionSeleccionada !: number;
   implementaciones = new Array<Implementacion>(new BusquedaTitulo(this.listaVideos), new BusquedaId(this.listaVideos));;
   valor !: string;
   video !: Video;
@@ -31,7 +32,6 @@ export class BuscadorVideosComponent implements OnInit {
   watch(video: Video){
     console.log(this.listaCoincidentes)
     console.log(video)
-    sessionStorage.setItem("videoOff", JSON.stringify(video))
     this.router.navigateByUrl("reproductorVideoOff")
   }
   change(e: any){

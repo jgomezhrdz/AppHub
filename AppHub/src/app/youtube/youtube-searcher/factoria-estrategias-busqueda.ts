@@ -1,21 +1,20 @@
 import { HttpClient } from "@angular/common/http";
 import { YoutubeService } from "../servicios/youtube.service";
-import { BusquedaCategoria } from "./Estrategias/busqueda-categoria";
-import { BusquedaKeyWord } from "./Estrategias/busqueda-key-word";
+import { dateOrder } from "./Estrategias/dateOrder";
+import { ratingOrder } from "./Estrategias/ratingOrder";
 
 export class FactoriaEstrategiasBusqueda {
 
-    private KEYWORD = 1;
-    private CATEGORY = 2;
+    private RATING = 1;
     constructor(private yt: YoutubeService, private http: HttpClient){
     }
 
     crearEstrategia(valor: number){
-        if(valor == this.KEYWORD){
-            return new BusquedaKeyWord(this.yt, this.http)
+        if(valor == this.RATING){
+            return new ratingOrder(this.yt, this.http)
         }
         else{
-            return new BusquedaCategoria(this.yt, this.http)
+            return new dateOrder(this.yt, this.http)
         }
     }
 }
