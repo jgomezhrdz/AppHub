@@ -11,6 +11,8 @@ Patrones Estructurales (2)
     - Bride: implementado para el buscador de videos offline. La abstraccion funcional sería el buscador
     y las implementaciones serían las formas de busqueda, por titulo y por id, devolviendo cada uno
     aquellos que contienen un porcentaje similar al 50%.
+    - Decorator: se aplica un decorador de tipo usuario admin para mejorar la funcionalidad del usuario comun
+    añadiendo los métodos de download correspondientes (musica y videos)
 
 Patrones de Comportamiento (2)
     -   Estrategia: engloba la estrategia correspondiente, hay dos implementadas:
