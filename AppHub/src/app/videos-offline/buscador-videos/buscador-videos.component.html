@@ -23,9 +23,13 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-outline-dark" (click)="watch(coincidente)">
-      <i class="external alternate icon"></i>
-      Watch
-    </button>
+    <div>
+      <button class="btn btn-outline-dark" (click)="watch(coincidente)">
+        <i class="external alternate icon"></i>
+        Watch
+      </button>
+      
+      <button type="button" class="btn btn-danger" (click) = "borrar(coincidente)">Delete</button>
+    </div>
   </div>
 </div>

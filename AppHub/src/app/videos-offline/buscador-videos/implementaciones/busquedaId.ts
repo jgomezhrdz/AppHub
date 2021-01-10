@@ -10,14 +10,21 @@ export class BusquedaId implements Implementacion{
     buscar(valor: string): Array<any> {
         var coincidentes = new Array();
         this.listaVideos.listaVideos.forEach(element =>{
-            if(this.similar(element.getId(), valor)>=50){
+            if(this.similar(element.getId(), valor)>=25 || this.contiene(element.getId(), valor)){
                 coincidentes.push(element)
             }
         })
         return coincidentes;
     }
 
+    contiene(a: string, b: string){
+        a = a.toLocaleLowerCase()
+        b = b.toLocaleLowerCase()
+        return a.includes(b)
+    }
     similar(a: string, b: string) {
+        a = a.toLocaleLowerCase()
+        b = b.toLocaleLowerCase()
         var equivalency = 0;
         var minLength = (a.length > b.length) ? b.length : a.length;    
         var maxLength = (a.length < b.length) ? b.length : a.length;    
@@ -26,8 +33,7 @@ export class BusquedaId implements Implementacion{
                 equivalency++;
             }
         }
-        
-    
+
         var weight = equivalency / maxLength;
         return (weight * 100);
     }

@@ -3,6 +3,7 @@ npm install boostrap
 npm install bootstrap jquery @popperjs/core
 npm install @angular/youtube-player
 npm i ng-connection-service
+ng add @ng-bootstrap/ng-bootstrap
 //SERVER
 npm i mysql 
 npm i express morgan promise-mysql cors
