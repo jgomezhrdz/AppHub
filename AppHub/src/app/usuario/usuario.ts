@@ -13,4 +13,8 @@ export class Usuario {
     
     downloadMusic(video: VideoYoutube): void{
     }
+
+    clone(){
+        return new Usuario(this.id, this.password)
+    }
 }

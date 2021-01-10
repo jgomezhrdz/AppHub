@@ -1,10 +1,13 @@
-Patrones de Creación (2)
+Patrones de Creación (3)
     - Singleton: Cada servicio es singleton (mañana especifico)
     - Factory Method: hay dos factorias aplicadas junto con el patron Strategy.
         -   Factoria de login
         -   Factoria de Registro
         Ambas sirven para crear la estrategia correspondiente para la peticion a la base de datos,
         Una para registrar usuario o guest y otra para el login del usuario o guest
+    - Prototpype: se ha implementado el patrón prototype en el registro de usuarios, de forma que se 
+    tengan dos usuarios tipo que se utilizan como plantilla; estos se clonan y se modifican los valores
+    con los introducidos por el usuario, y posteriormente se registran en la base de datos.
 Patrones Estructurales (3)
     - Fachada de la base de datos: Se tiene creada una fachada que englobe los servicios
     que contengan peticiones a la base de datos, ya sea crear, eliminar, login...
@@ -14,7 +17,7 @@ Patrones Estructurales (3)
     - Decorator: se aplica un decorador de tipo usuario admin para mejorar la funcionalidad del usuario comun
     añadiendo los métodos de download correspondientes (musica y videos)
 
-Patrones de Comportamiento (2)
+Patrones de Comportamiento (3)
     -   Estrategia: engloba la estrategia correspondiente, hay dos implementadas:
         -   Registro de usuarios: una estrategia para la creacion de usuario y otra para la creacion 
         de guest
@@ -23,3 +26,5 @@ Patrones de Comportamiento (2)
     -   State: se ha implementado el control de estados de la aplicación mediante el patrón State,
         indicando si esta offline, sin loggear o loggeado, ejecutando el consiguiente estado
         correspondiente.
+    -   Command: se ha implementado el patrón comando para borrar videos y la posibilidad de deshacer
+        el hecho de borrarlos sin ningún problema en caso de ser necesario (cuando se solicite claro).
