@@ -39,6 +39,7 @@ app.get('/download/video', (req,res) => {
 app.get('/download/music', (req,res) => {
     var URL = req.query.url;
     var title = req.query.title;
+    console.log(title)
     let downloaded = 0
     if (fs.existsSync(videooutput)) {
       downloaded = fs.statSync(videooutput).size

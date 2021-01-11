@@ -1,4 +1,4 @@
-/assets
+
 .DS_STORE
 
 /dist/
@@ -51,7 +51,8 @@ baseline.json
 
 # Ignore .history for the xyz.local-history VSCode extension
 .history
-
+*.mp3
+*.mp4
 # CLDR data
 tools/gulp-tasks/cldr/cldr-data/
 

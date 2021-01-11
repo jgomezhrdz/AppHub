@@ -20,7 +20,7 @@ export class ListaVideosService {
     }   
 }
   borrarVideo(video: Video): void{
-    if(!this.listaVideos.every(elem => {elem != video})){
+    if(!this.listaVideos.every(elem => {return elem != video})){
       this.listaVideos.splice(this.listaVideos.indexOf(video), 1)
    }
    else{
@@ -28,7 +28,7 @@ export class ListaVideosService {
    }
   }
   añadirVideo(video: Video): void{
-    if(this.listaVideos.every(elem => {elem != video})) this.listaVideos.push(video)
+    if(this.listaVideos.every(elem => {return elem != video})) this.listaVideos.push(video)
     console.log(this.listaVideos.values)
     localStorage.setItem("Videos", JSON.stringify(this.listaVideos))  
   }

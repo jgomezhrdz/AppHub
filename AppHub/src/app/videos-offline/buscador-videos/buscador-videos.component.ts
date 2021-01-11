@@ -36,13 +36,13 @@ export class BuscadorVideosComponent implements OnInit {
     this.video = video
     if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?")){
       this.invocador.ejecutarComando()
-    }
-    if(confirm("Warning: Se ha borrado un video, ¿desea restaurarlo? (Ultima oportunidad)")){
-      this.deshacer()
-    }
-    else{
-      this.listaCoincidentes.splice(this.listaCoincidentes.indexOf(video), 1)
-    }
+      if(confirm("Warning: Se ha borrado un video, ¿desea restaurarlo? (Ultima oportunidad)")){
+        this.deshacer()
+      }
+      else{
+        this.listaCoincidentes.splice(this.listaCoincidentes.indexOf(video), 1)
+      }
+    } 
   }
 
   deshacer(){

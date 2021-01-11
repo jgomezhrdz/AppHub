@@ -14,7 +14,7 @@ export class MusicDownloaderService {
   downloadMusic(video: VideoYoutube){
     this.http.get("http://localhost:4000/download/music?url="+video.videoUrl+"&title="+video.title)
     .subscribe(data => {console.log(data)})
-    var musica = new ArchivoMusica(video.videoId, video.title)
+    var musica = new ArchivoMusica(video.title, video.videoId)
     this.listaCanciones.añadirCancion(musica)
   }
 }

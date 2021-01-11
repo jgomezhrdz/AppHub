@@ -48,7 +48,7 @@ class UserController {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.query;
-            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE username = ? and password = ?', [email, password]);
+            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ? and password = ?', [email, password]);
             console.log(user.length);
             console.log(req.query);
             if (user.length > 0) {

@@ -15,9 +15,8 @@ export class PeticionesGuestService {
       error => console.log(error)
     )
   }
-
   comprobarUsuario(username: string){
-    var extension = "username?username="
+    var extension = "exists?username="
     this.http.get(this.url+extension+username).subscribe(
       data => console.log(data),
       error => console.log(error)

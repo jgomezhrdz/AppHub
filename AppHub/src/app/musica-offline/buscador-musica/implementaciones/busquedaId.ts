@@ -1,26 +1,27 @@
 import { ListaCancionesService } from "../../lista-canciones.service";
 import { Implementacion } from "./implementacion";
 
-export class BusquedaTitulo implements Implementacion{
+export class BusquedaId implements Implementacion{
+
     constructor(private listaCanciones: ListaCancionesService){
 
     }
+
     buscar(valor: string): Array<any> {
         var coincidentes = new Array();
         this.listaCanciones.listaCanciones.forEach(element =>{
-            if(this.similar(element.getTitle(), valor)>=50  || this.contiene(element.getTitle(), valor)){
+            if(this.similar(element.getId(), valor)>=25 || this.contiene(element.getId(), valor)){
                 coincidentes.push(element)
             }
         })
         return coincidentes;
     }
+
     contiene(a: string, b: string){
         a = a.toLocaleLowerCase()
         b = b.toLocaleLowerCase()
-        console.log(a.includes(b))
         return a.includes(b)
     }
-
     similar(a: string, b: string) {
         a = a.toLocaleLowerCase()
         b = b.toLocaleLowerCase()
@@ -32,8 +33,7 @@ export class BusquedaTitulo implements Implementacion{
                 equivalency++;
             }
         }
-        
-    
+
         var weight = equivalency / maxLength;
         return (weight * 100);
     }

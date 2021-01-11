@@ -33,7 +33,7 @@ class UserController {
 
     public async login(req: Request, res: Response): Promise<any> {
         const { email, password} = req.query;
-        const user = await pool.query('SELECT * FROM user WHERE username = ? and password = ?', 
+        const user = await pool.query('SELECT * FROM user WHERE email = ? and password = ?', 
                                         [email, password]);
         console.log(user.length);
         console.log(req.query)

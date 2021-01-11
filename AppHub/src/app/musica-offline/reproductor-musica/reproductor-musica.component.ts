@@ -13,7 +13,8 @@ export class ReproductorMusicaComponent implements OnInit {
   constructor(private canciones: ListaCancionesService) { }
 
   ngOnInit(): void {
-    this.cancionActual = JSON.parse(sessionStorage.getItem("CancionOff") as string) as ArchivoMusica
+    var aux = JSON.parse(sessionStorage.getItem("cancionOff") as string)
+    this.cancionActual = new ArchivoMusica(aux.title, aux.id)
   }
 
   pasarCancion(){
