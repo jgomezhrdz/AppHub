@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ArchivoMusica } from '../archivo-musica';
 import { ListaCancionesService } from '../lista-canciones.service';
 import { AgregadoArray } from './agregado-array';
@@ -9,8 +9,12 @@ import { IteratorArray } from './iteratorArray';
   templateUrl: './reproductor-musica.component.html',
   styleUrls: ['./reproductor-musica.component.css']
 })
+
 export class ReproductorMusicaComponent implements OnInit {
-  player = document.getElementById('player');
+  player !: HTMLAudioElement
+  @ViewChild('player') set playerRef(ref: ElementRef<HTMLAudioElement>) {
+    this.player = ref.nativeElement;
+  }
   cancionActual !: ArchivoMusica
   iterador : IteratorArray
   constructor(private canciones: ListaCancionesService) { 
@@ -33,11 +37,27 @@ export class ReproductorMusicaComponent implements OnInit {
   }
 
   pasarCancion(){
-    this.player.play()
     this.cancionActual = this.iterador.getNext()
+    this.player.load()
+    var playPromise = this.player.play()
+
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+      })
+      .catch(error => {
+      }); 
+    }
   }
   retrocederCancion(){
-    var player = ("player");
     this.cancionActual = this.iterador.getPrevious()
+    this.player.load()
+    var playPromise = this.player.play()
+
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+      })
+      .catch(error => {
+      }); 
+    }
   }
 }

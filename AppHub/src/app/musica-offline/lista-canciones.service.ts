@@ -26,7 +26,7 @@ export class ListaCancionesService {
   }
 
   borrarCancion(musica: ArchivoMusica): void{
-    if(!this.listaCanciones.every(elem => {return elem != musica})){
+    if(!this.listaCanciones.every(elem => {return (elem.getId() != musica.getId())})){
       this.listaCanciones.splice(this.listaCanciones.indexOf(musica), 1)
       localStorage.setItem("Canciones", JSON.stringify(this.listaCanciones))  
    }

@@ -11,10 +11,16 @@ export class MusicDownloaderService {
 
   constructor(private http:HttpClient, private listaCanciones: ListaCancionesService) { }
 
-  downloadMusic(video: VideoYoutube){
-    this.http.get("http://localhost:4000/download/music?url="+video.videoUrl+"&title="+video.title)
-    .subscribe(data => {console.log(data)})
-    var musica = new ArchivoMusica(video.title, video.videoId)
-    this.listaCanciones.añadirCancion(musica)
+  private async downloadFromServer(video: VideoYoutube): Promise<any>{
+    return (await this.http.get("http://localhost:4000/download/music?url="+video.videoUrl+"&title="+video.title).toPromise())
+  }
+  async downloadMusic(video: VideoYoutube){
+    var peticion = this.downloadFromServer(video)
+    await peticion.then(data => {
+      console.log(data)
+      var musica = new ArchivoMusica(video.title, video.videoId)
+      this.listaCanciones.añadirCancion(musica)
+    })
+
   }
 }

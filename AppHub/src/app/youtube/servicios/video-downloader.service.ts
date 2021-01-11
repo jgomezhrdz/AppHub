@@ -10,13 +10,15 @@ import { VideoYoutube } from '../video';
 export class VideoDownloaderService {
 
   constructor(private http:HttpClient, private listaVideos: ListaVideosService) { }
-  
-  downloadVideo(video: VideoYoutube){
-    const url: string = video.videoUrl;
-    const title: string = video.title;
-    this.http.get("http://localhost:4000/download/video?url="+url+"&title="+title)
-    .subscribe(data => {console.log(data)})
-    var videoOff = new Video(video.title, video.videoId)
-    this.listaVideos.añadirVideo(videoOff)
+  private async downloadFromServer(video: VideoYoutube): Promise<any>{
+    return (await this.http.get("http://localhost:4000/download/video?url="+video.videoUrl+"&title="+video.title).toPromise())
+  }
+  async downloadVideo(video: VideoYoutube){
+    var peticion = this.downloadFromServer(video)
+    await peticion.then(data => {
+      console.log(data)
+      var videoOff = new Video(video.title, video.videoId)
+      this.listaVideos.añadirVideo(videoOff)
+    })
   }
 }

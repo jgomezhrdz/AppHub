@@ -16,47 +16,32 @@ app.listen(4000, () => {
 app.get('/download/video', (req,res) => {
     var URL = req.query.url;
     var title = req.query.title;
-    let downloaded = 0
-    if (fs.existsSync(videooutput)) {
-      downloaded = fs.statSync(videooutput).size
-    }
-    const video = youtubedl(URL, ['--format=18'], { start: downloaded, cwd: __dirname })
-    video.on('info', function(info) {
-      console.log('Download started')
-      console.log('filename: ' + info._filename)
-      let total = info.size + downloaded
-      console.log('size: ' + total)
-      if (downloaded > 0) {
-        console.log('resuming from: ' + downloaded)
-        console.log('remaining bytes: ' + info.size)
-      }
-    })
     var videooutput = '../AppHub/src/assets/videos/'+title+".mp4";
-    video.pipe(fs.createWriteStream(videooutput, { flags: 'a' }))
-    res.json("res: Video descargado");
+    const video = youtubedl(URL, ['--format=18'], { cwd: __dirname })
+    video.pipe(fs.createWriteStream(videooutput))
+    video.on('end', function() {      
+      res.json("res: Video descargado")
+      });
+    video.on("error", function (err) {
+        console.error(err);
+        res.json("res: Video no descargado")
+      });
 })
 
 app.get('/download/music', (req,res) => {
     var URL = req.query.url;
     var title = req.query.title;
-    console.log(title)
-    let downloaded = 0
-    if (fs.existsSync(videooutput)) {
-      downloaded = fs.statSync(videooutput).size
-    }
-    const video = youtubedl(URL, ['--format=18'], { start: downloaded, cwd: __dirname })
-    video.on('info', function(info) {
-      console.log('Download started')
-      console.log('filename: ' + info._filename)
-      let total = info.size + downloaded
-      console.log('size: ' + total)
-      if (downloaded > 0) {
-        console.log('resuming from: ' + downloaded)
-        console.log('remaining bytes: ' + info.size)
-      }
-    })
     var videooutput = '../AppHub/src/assets/musica/'+title+".mp3";
-    video.pipe(fs.createWriteStream(videooutput, { flags: 'a' }))
-    res.json("res: Video descargado");
+    console.log(title)
+    const video = youtubedl(URL, ['--format=18'], { cwd: __dirname })
+    video.pipe(fs.createWriteStream(videooutput))
+    video.on('end', function() {    
+      console.log("Archivo descargado")  
+      res.json("res: Audio descargado")
+      });
+    video.on("error", function (err) {
+        console.error(err);
+        res.json("res: Audio no descargado")
+      });
 })
 

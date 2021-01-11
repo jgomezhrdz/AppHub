@@ -3,7 +3,7 @@
         <div class="content">
           <div align="center">{{ cancionActual.getTitle() }}</div>
           <div align="center">
-          <audio id="player" controls src='../../../assets/musica/{{cancionActual.getTitle()}}.mp3' type="audio/mp3" >
+          <audio #player controls autoplay src='../../../assets/musica/{{cancionActual.getTitle()}}.mp3' type="audio/mp3" >
           </audio>
         </div>
 
