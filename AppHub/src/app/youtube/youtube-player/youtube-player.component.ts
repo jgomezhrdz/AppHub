@@ -5,9 +5,11 @@ import { FachadaPeticionesService } from 'src/app/db-connection/fachada-peticion
 import { UsuarioAdmin } from 'src/app/usuario/usuario-admin';
 import { UsuarioComun } from 'src/app/usuario/usuario-comun';
 import { FachadaDescargaService } from '../servicios/fachada-descarga.service';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-youtube-player',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.css']
 })
@@ -26,7 +28,6 @@ export class YoutubePlayerComponent implements OnInit {
     document.body.appendChild(tag);
     this.activeUser = new UsuarioComun(userAux.id, userAux.password);
     await this.fachada.comprobarUsuario(this.activeUser.id).then(data => {
-      //console.log(data)
       this.isActive = data
       if(this.isActive){
         this.activeUser = new UsuarioAdmin(this.activeUser, this.fachadaDescarga)
@@ -36,11 +37,15 @@ export class YoutubePlayerComponent implements OnInit {
   }
 
   downloadVideo(){
-    this.activeUser.downloadVideo(this.video)
+    (this.activeUser.downloadVideo(this.video)).then(data => {
+      alert(data)
+    })
   }
 
   downloadMusic(){
-    this.activeUser.downloadMusic(this.video);
+    (this.activeUser.downloadMusic(this.video)).then(data =>{
+      alert(data)
+    })
   }
 
   getActive(){

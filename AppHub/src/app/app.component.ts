@@ -12,10 +12,15 @@ export class AppComponent implements DoCheck, OnInit{
   controladorEstados: ControladorEstados
   constructor(private router: Router){
   this.controladorEstados = new ControladorEstados(this.router)
+ 
   }
   ngOnInit(): void {
   }
   ngDoCheck(): void {
   this.controladorEstados.comprobarEstado();
+  }
+
+  getRouter(){
+    return this.router
   }
 }

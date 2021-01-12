@@ -1,17 +1,24 @@
-<form>
-  <div class="form-group">
-      <label for="exampleInput">Search Video
-          <select class = "btn btn-secondary btn-sm dropdown-toggle" [(ngModel)]="implementacionSeleccionada" (change)="change($event)" [ngModelOptions]="{standalone: true}">
-            <option value="0">Title</option>
-            <option value="1">ID</option>
-            
+
+<div class="card">
+  <h5 class="card-header" align="center">Search Song</h5>   
+    <div class="card-body">
+      <div class="container">
+        <div class="input-group mb-3">
+          <input [(ngModel)]="valor"  name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" (click) = "buscar()">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div class="input-group-append">
+            <select class = "btn btn-outline-secondary btn-sm dropdown-toggle" [(ngModel)]="implementacionSeleccionada" (change)="change($event)" [ngModelOptions]="{standalone: true}">
+              <option value="0">Title</option>
+              <option value="1">ID</option>
             </select>
-      </label>
-    <input name="keyword" [(ngModel)]="valor" class="form-control" id="exampleInput" placeholder="Keywords..."/>
-    <small id="emailHelp" class="form-text text-muted">Enter the keyword you want to search for.</small>
-  </div>
-  <button type="button" class="btn btn-primary" (click) = "buscar()">Search</button>
-</form>
+          </div>
+        </div>
+      </div>
+</div>
 
 <div class="ui four column grid">
 <div class="column" *ngFor="let coincidente of listaCoincidentes">

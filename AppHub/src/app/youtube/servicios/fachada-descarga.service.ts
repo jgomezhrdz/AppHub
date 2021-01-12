@@ -11,10 +11,10 @@ export class FachadaDescargaService {
         private musicDownloader: MusicDownloaderService){}
 
     downloadVideo(video: VideoYoutube){
-        this.videoDownloader.downloadVideo(video)
+        return this.videoDownloader.downloadVideo(video)
     }
 
     downloadMusic(video: VideoYoutube){
-        this.musicDownloader.downloadMusic(video)
+        return this.musicDownloader.downloadMusic(video)
     }
 }

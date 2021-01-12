@@ -11,12 +11,12 @@ export class UsuarioAdmin extends Usuario{
         this.user = user;
     }
 
-    downloadVideo(video: VideoYoutube){
-       this.fachada.downloadVideo(video)
+    downloadVideo(video: VideoYoutube): Promise<string>{
+       return this.fachada.downloadVideo(video)
     }
     
-    downloadMusic(video: VideoYoutube){
-        this.fachada.downloadMusic(video)
+    downloadMusic(video: VideoYoutube): Promise<string>{
+        return this.fachada.downloadMusic(video)
     }
 
 }

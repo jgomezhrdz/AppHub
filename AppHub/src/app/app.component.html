@@ -3,9 +3,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!--*ngIf="controladorEstados.conInternet"-->
-        <a class="nav-item nav-link active" *ngIf="controladorEstados.conInternet" href="YoutubeSearch">Youtube</a>
-        <a class="nav-item nav-link active" href="busquedaVideoOff">Videos offline</a>
-        <a class="nav-item nav-link active" href="busquedaMusicaOff">Music offline</a>
+        <button type="button" class="btn btn-outline-danger" style="color:white" *ngIf="controladorEstados.conInternet" (click)="getRouter().navigateByUrl('YoutubeSearch')">Youtube</button>
+        <a style="color:white" class="nav-item nav-link active" href="busquedaVideoOff">Videos offline</a>
+        <a style="color:white" class="nav-item nav-link active" href="busquedaMusicaOff">Music offline</a>
       </div>
     </div>
 </nav>

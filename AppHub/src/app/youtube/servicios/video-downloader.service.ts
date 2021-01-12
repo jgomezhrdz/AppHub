@@ -13,12 +13,26 @@ export class VideoDownloaderService {
   private async downloadFromServer(video: VideoYoutube): Promise<any>{
     return (await this.http.get("http://localhost:4000/download/video?url="+video.videoUrl+"&title="+video.title).toPromise())
   }
-  async downloadVideo(video: VideoYoutube){
+  async downloadVideo(video: VideoYoutube): Promise<string>{
     var peticion = this.downloadFromServer(video)
-    await peticion.then(data => {
-      console.log(data)
-      var videoOff = new Video(video.title, video.videoId)
-      this.listaVideos.añadirVideo(videoOff)
-    })
+    
+    var data = await peticion.then(
+      data => {
+        if(data.res == "OK"){
+          var videoOff = new Video(video.title, video.videoId)
+          this.listaVideos.añadirVideo(videoOff)
+          return "Video descargado correctamente"
+        }
+        else{
+          return "Error de descarga, es posible que no se pueda descargar"
+        }
+        
+      },
+      error => {
+        console.log(error)
+        return "Error de conexion: no se ha podido descargar"
+      }      
+    )
+    return data
   }
 }

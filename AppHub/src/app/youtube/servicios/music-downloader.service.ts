@@ -16,11 +16,23 @@ export class MusicDownloaderService {
   }
   async downloadMusic(video: VideoYoutube){
     var peticion = this.downloadFromServer(video)
-    await peticion.then(data => {
+    var data = await peticion.then(data => {
       console.log(data)
-      var musica = new ArchivoMusica(video.title, video.videoId)
-      this.listaCanciones.añadirCancion(musica)
-    })
-
-  }
+      if(data.res == "OK"){
+        var musica = new ArchivoMusica(video.title, video.videoId)
+        this.listaCanciones.añadirCancion(musica)
+        console.log(data)
+        return "Archivo de audio descargado correctamente"
+      }
+      else{
+        console.log(data)
+        return "Error de descarga, es posible que no se pueda descargar"
+      }
+      },
+      error => {
+        return "Error de conexion: no se ha podido descargar"
+      }
+    )
+    return data
+  } 
 }

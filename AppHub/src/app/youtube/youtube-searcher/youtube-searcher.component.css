@@ -12,7 +12,9 @@
     transition: all 150ms ease-out;
     width: 4em;
   }
-  
+  .container {
+    width: 40%;
+  }
   .play:hover {
     background: darkorange;
   }

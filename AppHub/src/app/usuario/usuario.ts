@@ -8,10 +8,14 @@ export class Usuario {
         this.password = password;
     }
 
-    downloadVideo(video: VideoYoutube): void{
+    downloadVideo(video: VideoYoutube): Promise<string>{
+        var vacio !: Promise<string>
+        return vacio
     }
     
-    downloadMusic(video: VideoYoutube): void{
+    downloadMusic(video: VideoYoutube):  Promise<string>{
+        var vacio !: Promise<string>
+        return vacio
     }
 
     clone(){

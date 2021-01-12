@@ -20,11 +20,11 @@ app.get('/download/video', (req,res) => {
     const video = youtubedl(URL, ['--format=18'], { cwd: __dirname })
     video.pipe(fs.createWriteStream(videooutput))
     video.on('end', function() {      
-      res.json("res: Video descargado")
+      res.json({"res": "OK"})
       });
     video.on("error", function (err) {
         console.error(err);
-        res.json("res: Video no descargado")
+        res.json({"res":"ERR"})
       });
 })
 
@@ -36,12 +36,11 @@ app.get('/download/music', (req,res) => {
     const video = youtubedl(URL, ['--format=18'], { cwd: __dirname })
     video.pipe(fs.createWriteStream(videooutput))
     video.on('end', function() {    
-      console.log("Archivo descargado")  
-      res.json("res: Audio descargado")
+      res.json({"res": "OK"})
       });
     video.on("error", function (err) {
         console.error(err);
-        res.json("res: Audio no descargado")
+        res.json({"res":"ERR"})
       });
 })
 
