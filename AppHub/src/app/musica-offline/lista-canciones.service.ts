@@ -6,7 +6,7 @@ import { ArchivoMusica } from './archivo-musica';
 })
 export class ListaCancionesService {
 
-  listaCanciones = new Array();
+  listaCanciones : Array<ArchivoMusica>;
 
   constructor() { 
     this.listaCanciones = new Array<ArchivoMusica>();
@@ -29,6 +29,14 @@ export class ListaCancionesService {
     if(!this.listaCanciones.every(elem => {return (elem.getId() != musica.getId())})){
       this.listaCanciones.splice(this.listaCanciones.indexOf(musica), 1)
       localStorage.setItem("Canciones", JSON.stringify(this.listaCanciones))  
-   }
+    }
+    else{
+      console.log("no hay ningun video con estas caracteristicas")
+    }
+  }
+
+  restaurarLista(listaMusica : Array<ArchivoMusica>){
+    this.listaCanciones = listaMusica
+    localStorage.setItem("Videos", JSON.stringify(this.listaCanciones))  
   }
 }

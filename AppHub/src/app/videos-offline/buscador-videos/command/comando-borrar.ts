@@ -12,12 +12,12 @@ export class ComandoBorrar implements ComandoDeshacer{
     }
     deshacer(): void {
         var aux = cloneDeep(this.listaVideosAuxiliar)
-        this.listaVideos.listaVideos = this.listaVideosAuxiliar
+        this.listaVideos.restaurarLista(this.listaVideosAuxiliar)
         this.listaVideosAuxiliar = aux
     }
     rehacer(): void {
         var aux = cloneDeep(this.listaVideosAuxiliar)
-        this.listaVideos.listaVideos = this.listaVideosAuxiliar
+        this.listaVideos.restaurarLista(this.listaVideosAuxiliar)
         this.listaVideosAuxiliar = aux
     }
     ejecutar(): void {
