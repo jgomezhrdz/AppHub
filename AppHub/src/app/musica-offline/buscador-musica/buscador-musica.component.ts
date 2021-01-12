@@ -35,7 +35,9 @@ export class BuscadorMusicaComponent implements OnInit {
 
   borrar(musica: ArchivoMusica){
     this.musica = musica
-    if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?")){
+    this.invocador.setMusicaComando(musica)
+    if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?"))
+    {
       this.invocador.ejecutarComando()
       if(confirm("Warning: Se ha borrado un video, ¿desea restaurarlo? (Ultima oportunidad)")){
         this.deshacer()

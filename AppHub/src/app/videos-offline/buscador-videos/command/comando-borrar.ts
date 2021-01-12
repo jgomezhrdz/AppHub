@@ -21,11 +21,12 @@ export class ComandoBorrar implements ComandoDeshacer{
         this.listaVideosAuxiliar = aux
     }
     ejecutar(): void {
+        console.log(this.video)
         this.listaVideosAuxiliar = cloneDeep(this.listaVideos.listaVideos)
         this.listaVideos.borrarVideo(this.video)
     }
     setVideo(video: Video){
-        return this.video
+        this.video = video
     }
     getVideo(){
         return this.video

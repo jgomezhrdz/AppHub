@@ -34,7 +34,9 @@ export class BuscadorVideosComponent implements OnInit {
 
   borrar(video: Video){
     this.video = video
-    if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?")){
+    this.invocador.setVideoComando(video)
+    if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?"))
+    {
       this.invocador.ejecutarComando()
       if(confirm("Warning: Se ha borrado un video, ¿desea restaurarlo? (Ultima oportunidad)")){
         this.deshacer()

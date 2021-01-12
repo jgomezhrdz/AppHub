@@ -28,7 +28,7 @@ export class ListaVideosService {
    }
   }
   añadirVideo(video: Video): void{
-    if(this.listaVideos.every(elem => {(elem.getId() != video.getId())})) this.listaVideos.push(video)
+    if(this.listaVideos.every(elem => {return (elem.getId() != video.getId())})) this.listaVideos.push(video)
     console.log(this.listaVideos.values)
     localStorage.setItem("Videos", JSON.stringify(this.listaVideos))  
   }

@@ -14,20 +14,29 @@
       <audio #player controls autoplay src='../../../assets/musica/{{cancionActual.getTitle()}}.mp3' type="audio/mp3" >
       </audio>
     </div>
-    <button type="button" class="btn" (click)="retrocederCancion()">
-      <img src="../../../assets/iconos/anterior.png" />
-    </button>
-    &nbsp;&nbsp;&nbsp;
-    <marquee behavior="scroll" direction="left" >
-      {{iterador.peekPrevious().getTitle()}}
-    </marquee>
     <br>
-    <button type="button" class="btn" (click)="pasarCancion()">
-        <img src="../../../assets/iconos/proximo.png" />
-    </button>
-    <br>
-    &nbsp;&nbsp;&nbsp;
-    <marquee behavior="scroll" direction="left" >
-      {{iterador.peekNext().getTitle()}}
-    </marquee>
-</div>
+    <div align="center">
+      <div class="input-group-append">
+        <button type="button" class="btn" (click)="retrocederCancion()">
+          <img src="../../../assets/iconos/anterior.png" />
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-control" id="exampleInput">
+          <marquee behavior="scroll" direction="left" >
+            {{iterador.peekPrevious().getTitle()}}
+          </marquee>
+        </div>
+      </div>
+      <br>
+      <div class="input-group-append">
+        <button type="button" class="btn" (click)="pasarCancion()">
+            <img src="../../../assets/iconos/proximo.png" />
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-control" id="exampleInput">
+          <marquee behavior="scroll" direction="left" >
+            {{iterador.peekNext().getTitle()}}
+          </marquee>
+        </div>
+      </div>
+    </div>

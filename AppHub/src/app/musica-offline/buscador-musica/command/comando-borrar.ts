@@ -24,10 +24,10 @@ export class ComandoBorrar implements ComandoDeshacer{
         this.listaMusicaAuxiliar = cloneDeep(this.listaCanciones.listaCanciones)
         this.listaCanciones.borrarCancion(this.musica)
     }
-    setVideo(musica: ArchivoMusica){
-        return this.musica
+    setArchivoMusica(musica: ArchivoMusica){
+        this.musica = musica
     }
-    getVideo(){
+    getArchivoMusica(){
         return this.musica
     }
 }

@@ -1,3 +1,4 @@
+import { Video } from "../../video";
 import { ComandoDeshacer } from "./comando-deshacer";
 
 export class Invocador {
@@ -17,5 +18,10 @@ export class Invocador {
 
     rehacerComando(){
         this.comando.rehacer()
+    }
+
+    setVideoComando(video: Video)
+    {
+        this.comando.setVideo(video)
     }
 }

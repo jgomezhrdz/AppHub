@@ -1,3 +1,4 @@
+import { ArchivoMusica } from "../../archivo-musica";
 import { ComandoDeshacer } from "./comando-deshacer";
 
 export class Invocador {
@@ -17,5 +18,10 @@ export class Invocador {
 
     rehacerComando(){
         this.comando.rehacer()
+    } 
+
+    setMusicaComando(archivoMusic: ArchivoMusica)
+    {
+        this.comando.setArchivoMusica(archivoMusic)
     }
 }
