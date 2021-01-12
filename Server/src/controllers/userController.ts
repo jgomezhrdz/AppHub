@@ -34,13 +34,22 @@ class UserController {
     public async login(req: Request, res: Response): Promise<any> {
         const { email, password} = req.query;
         const user = await pool.query('SELECT * FROM user WHERE email = ? and password = ?', 
-                                        [email, password]);
-        console.log(user.length);
-        console.log(req.query)
-        if (user.length > 0) {
-            return res.json({"token": crypto.randomBytes(64).toString('hex')});
-        }
-        res.status(404).json({ text: "The guest doesn't exits" });
+                                        [email, password])
+                                        .then((user)=>{
+                                            if (user.length > 0) {
+                                            res.json({"token": crypto.randomBytes(64).toString('hex'),
+                                                        "res": "OK"});
+                                            }
+                                            else{
+                                                res.json({ "res": "ERR" });
+                                            }
+                                        }
+                                        ).catch(
+                                            err =>{
+                                                res.json({"res": "ERR"})
+                                            }
+                                        );
+        
     }
 
     public async create(req: Request, res: Response): Promise<void> {
@@ -53,8 +62,6 @@ class UserController {
                 res.json({"res": "ERR"})
             }
         );
-        
-        res.json({ message: 'user Saved' });
     }
 
     public async update(req: Request, res: Response): Promise<void> {

@@ -7,7 +7,20 @@ export class InicioGuest implements EstrategiaLogin{
     constructor(private fachadaDb: FachadaPeticionesService){
 
     }
-    ejecutar(usuario: Usuario) {
-        this.fachadaDb.inicioSesionUsuarioGuest(usuario);
+    async ejecutar(usuario: Usuario) {
+        return await this.fachadaDb.inicioSesionUsuarioGuest(usuario).then(
+            data =>{
+                if(data.res == "OK")
+                {
+                    sessionStorage.setItem("token", data.token);
+                    return true
+                }
+                else
+                    return false
+            },
+            error =>{
+                return false
+            }
+        );
     } 
 }

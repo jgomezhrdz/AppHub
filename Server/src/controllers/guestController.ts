@@ -22,14 +22,20 @@ class UserController {
     public async login(req: Request, res: Response): Promise<any> {
         const { username, password} = req.query;
         const user = await pool.query('SELECT * FROM guest WHERE username = ? and password = ?', 
-                                        [username, password]);
-        console.log(user.length);
-        console.log(req.query)
-
-        if (user.length > 0) {
-            return res.json({"token": crypto.randomBytes(64).toString('hex')});
-        }
-        res.status(404).json({ text: "The guest doesn't exits" });
+                                        [username, password]).then((user)=>{
+                                            if (user.length > 0) {
+                                            res.json({"token": crypto.randomBytes(64).toString('hex'),
+                                                        "res": "OK"});
+                                            }
+                                            else{
+                                                res.json({ "res": "ERR" });
+                                            }
+                                        }
+                                        ).catch(
+                                            err =>{
+                                                res.json({"res": "ERR"})
+                                            }
+                                        );
     }
 
     public async create(req: Request, res: Response): Promise<void> {

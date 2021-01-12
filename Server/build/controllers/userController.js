@@ -48,13 +48,18 @@ class UserController {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.query;
-            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ? and password = ?', [email, password]);
-            console.log(user.length);
-            console.log(req.query);
-            if (user.length > 0) {
-                return res.json({ "token": crypto.randomBytes(64).toString('hex') });
-            }
-            res.status(404).json({ text: "The guest doesn't exits" });
+            const user = yield dbConnection_1.default.query('SELECT * FROM user WHERE email = ? and password = ?', [email, password])
+                .then((user) => {
+                if (user.length > 0) {
+                    res.json({ "token": crypto.randomBytes(64).toString('hex'),
+                        "res": "OK" });
+                }
+                else {
+                    res.json({ "res": "ERR" });
+                }
+            }).catch(err => {
+                res.json({ "res": "ERR" });
+            });
         });
     }
     create(req, res) {
@@ -64,7 +69,6 @@ class UserController {
             }).catch(err => {
                 res.json({ "res": "ERR" });
             });
-            res.json({ message: 'user Saved' });
         });
     }
     update(req, res) {

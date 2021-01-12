@@ -5,8 +5,21 @@ export class InicioUsuario {
     constructor(private fachadaDb: FachadaPeticionesService){
 
     }
-    ejecutar(usuario: Usuario) {
-        this.fachadaDb.inicioSesionUsuario(usuario);
+    async ejecutar(usuario: Usuario) {
+        return await this.fachadaDb.inicioSesionUsuario(usuario).then(
+            data =>{
+                if(data.res == "OK")
+                {
+                    sessionStorage.setItem("token", data.token);
+                    return true
+                }
+                else
+                    return false
+            },
+            error =>{
+                return false
+            }
+        );
     } 
 }
 

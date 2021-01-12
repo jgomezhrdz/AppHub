@@ -21,14 +21,9 @@ export class PeticionesUserService {
     return (await this.http.get(this.url+extension+email).toPromise())
   }
 
-  inicioSesionUsuario(usuario: Usuario){
+  async inicioSesionUsuario(usuario: Usuario){
     var extension = "login?email="
     var extension2 = "&password="
-    var correcto = false;
-    this.http.get<any>(this.url+extension+usuario.id+extension2+usuario.password).subscribe(
-      data => {console.log(data);
-               sessionStorage.setItem("token", data.token);},
-      error => console.log('oops', error)
-    )
+    return await this.http.get<any>(this.url+extension+usuario.id+extension2+usuario.password).toPromise()
   }
 }

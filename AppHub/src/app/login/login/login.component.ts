@@ -19,10 +19,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  inicioSesion(){
+  async inicioSesion(){
     var usuario = new Usuario(this.id, this.password)
-    this.factorialogin.crearEstrategia(this.valor).ejecutar(usuario)
-    sessionStorage.setItem("Usuario", JSON.stringify(usuario))
+    var resultado = await this.factorialogin.crearEstrategia(this.valor).ejecutar(usuario)
+    if(resultado){
+      sessionStorage.setItem("Usuario", JSON.stringify(usuario))
+    }
+    else
+      alert("El usuario o contraseña son erroneos, vuelva a intentarlo")
   }
 
   registro(){
