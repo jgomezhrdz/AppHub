@@ -11,11 +11,8 @@ export class PeticionesUserService {
   private url = "http://localhost:3000/api/users/"
   constructor(private http: HttpClient) { }
 
-  registrarUsuario(usuario: Usuario){
-    this.http.post(this.url, {email: usuario.id, password: usuario.password}).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    )
+  async registrarUsuario(usuario: Usuario): Promise<any>{
+    return (await this.http.post(this.url, {email: usuario.id, password: usuario.password}).toPromise())
   }
 
    async comprobarUsuario(email: string): Promise<any>{

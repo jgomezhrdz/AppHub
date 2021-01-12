@@ -46,14 +46,11 @@ class UserController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const result = yield dbConnection_1.default.query('INSERT INTO guest set ?', [req.body]);
-            }
-            catch (e) {
-                console.error('Error Occurred', e);
-            }
-            console.log(req.body);
-            res.json({ message: res.statusMessage });
+            const result = yield dbConnection_1.default.query('INSERT INTO guest set ?', [req.body]).then(data => {
+                res.json({ "res": "OK" });
+            }).catch(err => {
+                res.json({ "res": "ERR" });
+            });
         });
     }
     update(req, res) {

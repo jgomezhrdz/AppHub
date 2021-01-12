@@ -59,7 +59,11 @@ class UserController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield dbConnection_1.default.query('INSERT INTO user set ?', [req.body]);
+            const result = yield dbConnection_1.default.query('INSERT INTO user set ?', [req.body]).then(data => {
+                res.json({ "res": "OK" });
+            }).catch(err => {
+                res.json({ "res": "ERR" });
+            });
             res.json({ message: 'user Saved' });
         });
     }

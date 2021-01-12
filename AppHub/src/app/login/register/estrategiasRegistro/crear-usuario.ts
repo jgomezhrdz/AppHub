@@ -8,8 +8,18 @@ export class CrearUsuario implements Estrategia{
     constructor(private peticiones: FachadaPeticionesService){
 
     }
-    ejecutar(usuario: Usuario) {
-        this.peticiones.registrarUsuario(usuario)
+    ejecutar(usuario: Usuario): Promise<boolean>{
+        return this.peticiones.registrarUsuario(usuario).then(
+            data =>{
+                if(data.res == "OK")
+                    return true
+                else
+                    return false
+            },
+            error =>{
+                return false
+            }
+        )
     }
 
 }

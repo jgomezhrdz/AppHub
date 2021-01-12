@@ -21,23 +21,24 @@
 </div>
 
 
-<div class="ui four column grid">
-  <div class="column" *ngFor="let coincidente of listaCoincidentes">
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let coincidente of listaCoincidentes">
     <div class="ui card">
       <div class="content">
-        <a class="header" style="margin: 1em 0 1em 0;">{{ coincidente.getTitle() }}</a>
+        <h6 class="card-header" align="center">{{ coincidente.getTitle() }}</h6>
         <div class="meta">
           <span class="ui right floated date" style="font-weight: bolder;">ID: {{ coincidente.getId() }}</span>
         </div>
       </div>
     </div>
-    <div>
+    <br>
+    <div align = "center">
       <button class="btn btn-outline-dark" (click)="watch(coincidente)">
         <i class="external alternate icon"></i>
         Watch
-      </button>
-      
+      </button>   
       <button type="button" class="btn btn-danger" (click) = "borrar(coincidente)">Delete</button>
     </div>
   </div>
 </div>
+

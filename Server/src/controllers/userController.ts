@@ -44,7 +44,16 @@ class UserController {
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        const result = await pool.query('INSERT INTO user set ?', [req.body]);
+        const result = await pool.query('INSERT INTO user set ?', [req.body]).then(
+            data => {
+                res.json({"res": "OK"})
+            }
+        ).catch(
+            err =>{
+                res.json({"res": "ERR"})
+            }
+        );
+        
         res.json({ message: 'user Saved' });
     }
 

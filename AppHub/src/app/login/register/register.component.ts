@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  register(){
+  async register(){
     if(this.valor==1){
       this.usuarioRegistro = this.usuarioDefault.clone()
     }
@@ -33,8 +33,13 @@ export class RegisterComponent implements OnInit {
     }
     this.usuarioRegistro.id = this.id
     this.usuarioRegistro.password = this.password
-    this.factorialogin.crearEstrategia(this.valor).ejecutar(this.usuarioRegistro);
-    this.router.navigateByUrl("Login")
+    var data = await this.factorialogin.crearEstrategia(this.valor).ejecutar(this.usuarioRegistro)
+    if(data){
+      alert("Se ha registrado el usuario correctamente, Inicie Sesión")
+      this.router.navigateByUrl("Login")
+    }
+    else
+      alert("No se ha podido registrar el usuario, vuelva a intentarlo")
   }
 
   getValor(){

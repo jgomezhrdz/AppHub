@@ -9,11 +9,8 @@ export class PeticionesGuestService {
   private url = "http://localhost:3000/api/guests/"
   constructor(private http: HttpClient) { }
 
-  registrarUsuario(usuario: Usuario){
-    this.http.post(this.url, {username: usuario.id, password: usuario.password}).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    )
+  async registrarUsuario(usuario: Usuario): Promise<any>{
+    return await this.http.post(this.url, {username: usuario.id, password: usuario.password}).toPromise()
   }
   comprobarUsuario(username: string){
     var extension = "exists?username="

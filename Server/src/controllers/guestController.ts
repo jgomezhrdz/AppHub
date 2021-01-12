@@ -33,14 +33,15 @@ class UserController {
     }
 
     public async create(req: Request, res: Response): Promise<void> {
-        try{
-        const result = await pool.query('INSERT INTO guest set ?', [req.body])
-        }
-        catch (e) {
-            console.error('Error Occurred', e);
-          }
-          console.log(req.body)
-        res.json({ message: res.statusMessage });
+        const result = await pool.query('INSERT INTO guest set ?', [req.body]).then(
+            data => {
+                res.json({"res": "OK"})
+            }
+        ).catch(
+            err =>{
+                res.json({"res": "ERR"})
+            }
+        );
     }
 
     public async update(req: Request, res: Response): Promise<void> {

@@ -20,15 +20,16 @@
           </div>
           
         </div>
-        </div>
+      </div>
+  </div>
 </div>
 
 
-<div class="ui four column grid">
-  <div class="column" *ngFor="let video of videos">
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let video of videos">
     <div class="ui card">
       <div class="content">
-        <a class="header" style="margin: 1em 0 1em 0;">{{ video.title }}</a>
+        <h6 class="card-header" align="center">{{ video.title }}</h6>
         <div class="meta">
           <span class="ui right floated date" style="font-weight: bolder;">{{ video.publishedAt | date:'mediumDate' }}</span>
         </div>
@@ -37,9 +38,13 @@
         </div>
       </div>
     </div>
-    <button (click)="watchVideo(video)">
-      watch
-    </button>
+    <br>
+    <div align = "center">
+      <button class="btn btn-outline-danger" (click)="watchVideo(video)">
+        watch
+      </button>
+  </div>
+
   </div>
 </div>
 

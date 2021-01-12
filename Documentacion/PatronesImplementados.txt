@@ -3,15 +3,18 @@ Patrones de Creación (3)
     - Factory Method: hay dos factorias aplicadas junto con el patron Strategy.
         -   Factoria de login
         -   Factoria de Registro
+        -   Factoria de Busqueda (videos de youtube)
         Ambas sirven para crear la estrategia correspondiente para la peticion a la base de datos,
-        Una para registrar usuario o guest y otra para el login del usuario o guest
+        Una para registrar usuario o guest y otra para el login del usuario o guest.
+    - Factory Method: se ha implementado un factory method de implementación del bridge, de forma 
+    que se asigne y se cree la implementación según la forma de búsqueda aplicada.
     - Prototpype: se ha implementado el patrón prototype en el registro de usuarios, de forma que se 
     tengan dos usuarios tipo que se utilizan como plantilla; estos se clonan y se modifican los valores
     con los introducidos por el usuario, y posteriormente se registran en la base de datos.
 Patrones Estructurales (3)
     - Fachada de la base de datos: Se tiene creada una fachada que englobe los servicios
     que contengan peticiones a la base de datos, ya sea crear, eliminar, login...
-    - Bride: implementado para el buscador de videos offline. La abstraccion funcional sería el buscador
+    - Bridge: implementado para el buscador de videos offline. La abstraccion funcional sería el buscador
     y las implementaciones serían las formas de busqueda, por titulo y por id, devolviendo cada uno
     aquellos que contienen un porcentaje similar al 50%.
     - Decorator: se aplica un decorador de tipo usuario admin para mejorar la funcionalidad del usuario comun
@@ -23,8 +26,14 @@ Patrones de Comportamiento (3)
         de guest
         -   Login de usuarios: una estrategia para el login de usuario y otra para el login 
         de guest
+        -   Búsqueda de videos de youtube: una estrategia de ordenación por rating o date en los
+        vídeos de youtube
     -   State: se ha implementado el control de estados de la aplicación mediante el patrón State,
-        indicando si esta offline, sin loggear o loggeado, ejecutando el consiguiente estado
-        correspondiente.
+    indicando si esta offline, sin loggear o loggeado, ejecutando el consiguiente estado
+    correspondiente.
     -   Command: se ha implementado el patrón comando para borrar videos y la posibilidad de deshacer
-        el hecho de borrarlos sin ningún problema en caso de ser necesario (cuando se solicite claro).
+    el hecho de borrarlos sin ningún problema en caso de ser necesario (cuando se solicite claro).
+    -   Iterator: se ha implementado el patrón iterator para el recorrido sencillo de la lista de 
+    canciones. Se ha realizado debido a que se presenta la posibilidad de, dentro del mismo reproductor
+    reproducir la canción siguiente (visualiarla sin pasar de canción) y la misma funcionalidad
+    con la canción previa a la actual (siempre teniendo en cuenta su existencia)
