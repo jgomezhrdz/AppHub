@@ -11,7 +11,7 @@ export class VideoDownloaderService {
 
   constructor(private http:HttpClient, private listaVideos: ListaVideosService) { }
   private async downloadFromServer(video: VideoYoutube): Promise<any>{
-    return (await this.http.get("http://localhost:4000/download/video?url="+video.videoUrl+"&title="+video.title).toPromise())
+    return (await this.http.get("http://localhost:3000/download/video?url="+video.videoUrl+"&title="+video.title).toPromise())
   }
   async downloadVideo(video: VideoYoutube): Promise<string>{
     var peticion = this.downloadFromServer(video)

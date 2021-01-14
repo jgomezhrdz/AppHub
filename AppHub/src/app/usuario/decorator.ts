@@ -2,8 +2,7 @@ import { FachadaDescargaService } from "../youtube/servicios/fachada-descarga.se
 import { VideoYoutube } from "../youtube/video";
 import { Usuario } from "./usuario";
 
-//Decorador del usuario regular de la aplicacion, puede descargar videos y musica
-export class UsuarioAdmin extends Usuario{
+export abstract class Decorator extends Usuario{
     private user: Usuario;
 
     constructor(user: Usuario, private fachada: FachadaDescargaService){
@@ -11,12 +10,10 @@ export class UsuarioAdmin extends Usuario{
         this.user = user;
     }
 
-    downloadVideo(video: VideoYoutube): Promise<string>{
-       return this.fachada.downloadVideo(video)
-    }
+    abstract downloadVideo(video: VideoYoutube): Promise<string>
     
-    downloadMusic(video: VideoYoutube): Promise<string>{
-        return this.fachada.downloadMusic(video)
-    }
+    abstract downloadMusic(video: VideoYoutube): Promise<string>
 
 }
+
+

@@ -12,7 +12,7 @@ export class MusicDownloaderService {
   constructor(private http:HttpClient, private listaCanciones: ListaCancionesService) { }
 
   private async downloadFromServer(video: VideoYoutube): Promise<any>{
-    return (await this.http.get("http://localhost:4000/download/music?url="+video.videoUrl+"&title="+video.title).toPromise())
+    return (await this.http.get("http://localhost:3000/download/music?url="+video.videoUrl+"&title="+video.title).toPromise())
   }
   async downloadMusic(video: VideoYoutube){
     var peticion = this.downloadFromServer(video)

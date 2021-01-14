@@ -4,9 +4,9 @@
 <div class = "center">
     <div class="panel" align="center">
         <div class="card2">
-          <h5 class="card-header" align="center" type="text" maxlength="10">
-          <marquee behavior="scroll"  direction="left" >{{ cancionActual.getTitle() }}</marquee>
-          </h5>
+          <h6 align="center" type="text" maxlength="10">
+            <marquee behavior="scroll"  direction="left" >{{ cancionActual.getTitle() }}</marquee>
+          </h6>
         </div>
     </div>
     <br>
@@ -21,7 +21,7 @@
           <img src="../../../assets/iconos/anterior.png" />
         </button>
         &nbsp;&nbsp;&nbsp;
-        <div class="form-control" id="exampleInput">
+        <div class="form-control2">
           <marquee behavior="scroll" direction="left" >
             {{iterador.peekPrevious().getTitle()}}
           </marquee>
@@ -33,7 +33,7 @@
             <img src="../../../assets/iconos/proximo.png" />
         </button>
         &nbsp;&nbsp;&nbsp;
-        <div class="form-control" id="exampleInput">
+        <div class="form-control2">
           <marquee behavior="scroll" direction="left" >
             {{iterador.peekNext().getTitle()}}
           </marquee>

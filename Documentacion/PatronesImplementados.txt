@@ -37,3 +37,5 @@ Patrones de Comportamiento (3)
     canciones. Se ha realizado debido a que se presenta la posibilidad de, dentro del mismo reproductor
     reproducir la canción siguiente (visualiarla sin pasar de canción) y la misma funcionalidad
     con la canción previa a la actual (siempre teniendo en cuenta su existencia)
+
+Para iniciar la aplicacion web: ng serve --live-reload false
