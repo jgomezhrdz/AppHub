@@ -6,6 +6,8 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    max-width: 50%;
+    min-width: 50%;
   }
   .card2 {
     position: relative;
@@ -13,16 +15,21 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    max-width: 60%;
-    width: 60%;
-    min-width: 60%;
+    max-width: 70%;
+    width: 70%;
+    min-width: 70%;
 }
-
+.input-group-append {
+  margin-left: -1px;
+  max-width: 50%;
+  width: 50%;
+  min-width: 50%;
+}
 .form-control2{
   display: block;
-  max-width: 70%;
-  width: 70%;
-  min-width: 70%;
+  max-width: 80%;
+  width: 80%;
+  min-width: 80%;
   height: calc(1.5em + .75rem + 2px);
   padding: .375rem .75rem;
   font-size: 1rem;
