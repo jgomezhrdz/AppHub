@@ -4,6 +4,7 @@ import { ListaVideosService } from '../lista-videos.service';
 import { Video } from '../video';
 import { ComandoBorrar } from './command/comando-borrar';
 import { Invocador } from './command/invocador';
+import { AbstraccionBusqueda } from './implementaciones/abstraccion-busqueda';
 import { BusquedaTitulo } from './implementaciones/busqueda-titulo';
 import { BusquedaId } from './implementaciones/busquedaId';
 import { Implementacion } from './implementaciones/implementacion';
@@ -13,15 +14,13 @@ import { Implementacion } from './implementaciones/implementacion';
   templateUrl: './buscador-videos.component.html',
   styleUrls: ['./buscador-videos.component.css']
 })
-export class BuscadorVideosComponent implements OnInit {
-  implementacion !: Implementacion;
+export class BuscadorVideosComponent extends AbstraccionBusqueda implements OnInit {
   implementacionSeleccionada !: number;
-  implementaciones = new Array<Implementacion>(new BusquedaTitulo(this.listaVideos), new BusquedaId(this.listaVideos));;
-  valor !: string;
+  keywords !: string;
   video !: Video;
-  listaCoincidentes = new Array<Video>()
   invocador = new Invocador()
-  constructor(private listaVideos: ListaVideosService, private router: Router) { 
+  constructor(listaVideos: ListaVideosService, private router: Router) {
+    super(listaVideos) 
     this.invocador.setComando(new ComandoBorrar(this.listaVideos, this.video))
   }
 
@@ -29,7 +28,8 @@ export class BuscadorVideosComponent implements OnInit {
   }
 
   buscar(){
-    this.listaCoincidentes = this.implementacion.buscar(this.valor)
+    super.valor = (this.keywords)
+    super.buscar()
   }
 
   borrar(video: Video){
@@ -42,7 +42,7 @@ export class BuscadorVideosComponent implements OnInit {
         this.deshacer()
       }
       else{
-        this.listaCoincidentes.splice(this.listaCoincidentes.indexOf(video), 1)
+        super.getCoincidentes().splice(this.listaCoincidentes.indexOf(video), 1)
       }
     } 
   }
@@ -56,9 +56,9 @@ export class BuscadorVideosComponent implements OnInit {
     sessionStorage.setItem("videoOff", JSON.stringify(video))
     this.router.navigateByUrl("reproductorVideoOff")
   }
+
   change(e: any){
-    this.implementacion = this.implementaciones[e.target.value];
-    console.log(this.implementacion);
+    super.setImplementacion(e.target.value);
   }
   
 }

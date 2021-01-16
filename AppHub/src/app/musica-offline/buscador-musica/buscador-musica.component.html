@@ -4,7 +4,7 @@
     <div class="card-body">
       <div class="container">
         <div class="input-group mb-3">
-          <input [(ngModel)]="valor"  name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
+          <input [(ngModel)]="keywords"  name="keyword" class="form-control" id="exampleInput" placeholder="Keywords..."/>
           <div class="input-group-append">
             <button type="button" class="btn btn-outline-secondary" (click) = "buscar()">
               <i class="fa fa-search"></i>
@@ -22,7 +22,7 @@
   </div>
 
 <div class="grid-container">
-  <div class="grid-item" *ngFor="let coincidente of listaCoincidentes">
+  <div class="grid-item" *ngFor="let coincidente of getCoincidentes()">
     <div class="ui card">
       <div class="content">
         <h6 class="card-header" align="center">{{ coincidente.getTitle() }}</h6>

@@ -4,6 +4,7 @@ import { ArchivoMusica } from '../archivo-musica';
 import { ListaCancionesService } from '../lista-canciones.service';
 import { ComandoBorrar } from './command/comando-borrar';
 import { Invocador } from './command/invocador';
+import { AbstraccionBusqueda } from './implementaciones/abstraccion-busqueda';
 import { BusquedaTitulo } from './implementaciones/busqueda-titulo';
 import { BusquedaId } from './implementaciones/busquedaId';
 import { Implementacion } from './implementaciones/implementacion';
@@ -13,16 +14,14 @@ import { Implementacion } from './implementaciones/implementacion';
   templateUrl: './buscador-musica.component.html',
   styleUrls: ['./buscador-musica.component.css']
 })
-export class BuscadorMusicaComponent implements OnInit {
+export class BuscadorMusicaComponent extends AbstraccionBusqueda implements OnInit {
 
-  implementacion !: Implementacion;
   implementacionSeleccionada !: number;
-  implementaciones = new Array<Implementacion>(new BusquedaTitulo(this.listaCanciones), new BusquedaId(this.listaCanciones));;
-  valor !: string;
+  keywords !: string;
   musica !: ArchivoMusica;
-  listaCoincidentes = new Array<ArchivoMusica>()
   invocador = new Invocador()
-  constructor(private listaCanciones: ListaCancionesService, private router: Router) { 
+  constructor(listaCanciones: ListaCancionesService, private router: Router) { 
+    super(listaCanciones)
     this.invocador.setComando(new ComandoBorrar(this.listaCanciones, this.musica))
   }
 
@@ -30,7 +29,8 @@ export class BuscadorMusicaComponent implements OnInit {
   }
 
   buscar(){
-    this.listaCoincidentes = this.implementacion.buscar(this.valor)
+    super.valor = this.keywords
+    super.buscar()
   }
 
   borrar(musica: ArchivoMusica){
@@ -43,7 +43,7 @@ export class BuscadorMusicaComponent implements OnInit {
         this.deshacer()
       }
       else{
-        this.listaCoincidentes.splice(this.listaCoincidentes.indexOf(musica), 1)
+        super.getCoincidentes().splice(this.listaCoincidentes.indexOf(musica), 1)
       }
     } 
   }
