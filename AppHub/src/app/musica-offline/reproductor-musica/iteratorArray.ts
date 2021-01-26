@@ -23,7 +23,7 @@ export class IteratorArray implements Iterador{
         if(this.hasMore())
             musica = this.lista.lista[this.index+1]
         else
-            musica = new ArchivoMusica("", "")
+            musica = this.lista.lista[0]
         return musica
     }
     peekPrevious() : ArchivoMusica{
@@ -31,15 +31,21 @@ export class IteratorArray implements Iterador{
         if(this.hasMorePrevious())
             musica = this.lista.lista[this.index-1]
         else
-            musica = new ArchivoMusica("", "")
+            musica = this.lista.lista[this.lista.lista.length-1]
         return musica
     }
     getNext(): ArchivoMusica {
-        this.index += 1
+        if(this.hasMore())
+            this.index += 1
+        else
+            this.index = 0
         return (this.lista.lista[this.index])
     }
     getPrevious(): ArchivoMusica {
-        this.index -= 1
+        if(this.hasMorePrevious())
+            this.index -= 1
+        else
+            this.index = this.lista.lista.length-1
         return (this.lista.lista[this.index])
     }
     hasMorePrevious(): boolean {
