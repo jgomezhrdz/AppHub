@@ -36,10 +36,10 @@ export class BuscadorMusicaComponent extends AbstraccionBusqueda implements OnIn
   borrar(musica: ArchivoMusica){
     this.musica = musica
     this.invocador.setMusicaComando(musica)
-    if(confirm("Se ha seleccionado el video para ser borrado, ¿esta seguro?"))
+    if(confirm("Se ha seleccionado el archivo de musica para ser borrado, ¿esta seguro?"))
     {
       this.invocador.ejecutarComando()
-      if(confirm("Warning: Se ha borrado un video, ¿desea restaurarlo? (Ultima oportunidad)")){
+      if(confirm("Warning: Se ha borrado un archivo de musica, ¿desea restaurarlo? (Ultima oportunidad)")){
         this.deshacer()
       }
       else{
